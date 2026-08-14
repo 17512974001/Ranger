@@ -11,7 +11,6 @@ _parsed_bus.json
 # 生成产物（可由脚本重新生成）
 web_data/
 brt_output/
-transit_site/data/
 
 # 系统与编辑器
 .DS_Store
