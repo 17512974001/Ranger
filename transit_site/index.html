@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>广州公共交通线网</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="map"></div>
+
+  <aside id="panel">
+    <header class="panel-head">
+      <h1>广州公共交通线网</h1>
+      <p class="stats" id="stats"></p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="search">搜索</button>
+      <button class="tab" data-tab="layers">图层</button>
+      <button class="tab" data-tab="about">说明</button>
+    </nav>
+
+    <section class="tab-body active" id="tab-search">
+      <div class="field">
+        <label for="route-search">线路搜索（如 527、B1、地铁1号线）</label>
+        <input id="route-search" type="text" placeholder="输入线路号…" autocomplete="off">
+        <ul class="suggest" id="route-suggest"></ul>
+      </div>
+      <div class="field">
+        <label for="stop-search">站点搜索（如 梅花村、体育西路）</label>
+        <input id="stop-search" type="text" placeholder="输入站名…" autocomplete="off">
+        <ul class="suggest" id="stop-suggest"></ul>
+      </div>
+      <button class="btn ghost" id="clear-btn">清除高亮</button>
+    </section>
+
+    <section class="tab-body" id="tab-layers">
+      <div class="field">
+        <label>底图（国内网络推荐高德）</label>
+        <label class="check"><input type="radio" name="basemap" value="gaode" checked> 高德街道（默认，加载快）</label>
+        <label class="check"><input type="radio" name="basemap" value="gaode_img"> 高德影像（卫星图）</label>
+        <label class="check"><input type="radio" name="basemap" value="carto"> 浅色底图</label>
+        <label class="check"><input type="radio" name="basemap" value="osm"> OpenStreetMap（海外）</label>
+      </div>
+      <label class="check"><input type="checkbox" id="lyr-metro-routes" checked> 地铁线路（彩色=运营，灰虚线=在建/规划）</label>
+      <label class="check"><input type="checkbox" id="lyr-metro-stops" checked> 地铁车站</label>
+      <label class="check"><input type="checkbox" id="lyr-bus-stops" checked> 公交站点（聚合显示）</label>
+      <label class="check"><input type="checkbox" id="lyr-bus-routes" checked> 公交线路（蓝色=BRT）</label>
+      <label class="check"><input type="checkbox" id="lyr-brt-only"> 仅显示 BRT（B 字头）</label>
+    </section>
+
+    <section class="tab-body" id="tab-about">
+      <p>基于广州公交与地铁开源数据构建的原型，仅用于研究展示。</p>
+      <ul>
+        <li>公交 2612 条线路、10143 个去重站点；</li>
+        <li>地铁 21 条运营线（约 713 km）与 13 段在建/规划（约 286 km）、409 个车站；</li>
+        <li>点击线路/站点可查看详情；地铁站可查看 300 米内公交接驳。</li>
+      </ul>
+      <p class="hint">坐标 WGS84，底图可能与实际道路存在轻微偏移；线路与站点数据来自 2025 年采集。</p>
+    </section>
+
+    <div class="info" id="info"></div>
+  </aside>
+
+  <div class="legend" id="legend"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="data/bus_routes.js"></script>
+  <script src="data/bus_stops.js"></script>
+  <script src="data/metro_routes.js"></script>
+  <script src="data/metro_stops.js"></script>
+  <script src="data/bus_route_stops.js"></script>
+  <script src="data/stop_routes.js"></script>
+  <script src="data/metro_route_stops.js"></script>
+  <script src="data/metro_stop_routes.js"></script>
+  <script src="data/metro_bus_feeders.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
