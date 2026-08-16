@@ -485,6 +485,8 @@
     });
   }
   buildStationPlatforms();
+  // 懒加载数据（station_platforms 等）加载完成后重建平台索引
+  window.__ON_DEFERRED_DATA__ = function () { buildStationPlatforms(); };
 
   // ---------- transit navigation (研究级换乘) ----------
   var navStations = new Map();
@@ -838,6 +840,10 @@
     var qs = (window.location && window.location.search) || '';
     var m = qs.match(/basemap=([^&]+)/);
     if (m && BASEMAPS[m[1]]) { return m[1]; }
+    try {
+      var saved = localStorage.getItem('gz_basemap');
+      if (saved && BASEMAPS[saved]) { return saved; }
+    } catch (e) { /* 无 localStorage 时忽略 */ }
     if (window.__DEFAULT_BASEMAP__ && BASEMAPS[window.__DEFAULT_BASEMAP__]) {
       return window.__DEFAULT_BASEMAP__;
     }
@@ -850,6 +856,7 @@
     var bm = BASEMAPS[key];
     if (!bm) { return; }
     currentBasemap = key;
+    try { localStorage.setItem('gz_basemap', key); } catch (e) { /* 忽略 */ }
     if (tileLayer) { map.removeLayer(tileLayer); }
     tileLayer = L.tileLayer(bm.url, {
       subdomains: bm.subdomains,

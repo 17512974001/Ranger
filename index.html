@@ -80,11 +80,28 @@
   <script src="data/metro_route_stops.js"></script>
   <script src="data/metro_stop_routes.js"></script>
   <script src="data/metro_bus_feeders.js"></script>
-<script src="data/stop_pinyin.js"></script>
 <script src="data/derived_platforms.js"></script>
-<script src="data/chelaile_platform_fixes.js"></script>
 <script src="data/station_merge_map.js"></script>
-<script src="data/station_platforms.js"></script>
 <script src="app.js"></script>
+<script>
+  // 懒加载非关键数据（首屏更快；加载完自动重建平台索引）
+  (function () {
+    var files = ['data/stop_pinyin.js', 'data/chelaile_platform_fixes.js', 'data/station_platforms.js'];
+    var i = 0;
+    function next() {
+      if (i >= files.length) {
+        if (window.__ON_DEFERRED_DATA__) { window.__ON_DEFERRED_DATA__(); }
+        return;
+      }
+      var s = document.createElement('script');
+      s.src = files[i++];
+      s.async = true;
+      s.onload = next;
+      s.onerror = next;
+      document.body.appendChild(s);
+    }
+    next();
+  })();
+</script>
 </body>
 </html>
