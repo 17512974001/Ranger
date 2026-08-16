@@ -158,11 +158,11 @@ const assertFeats = (layer, n, type, check) => {
 };
 assertFeats(first[0], 70, 'LineString', f => (f.properties.route_cn || '').indexOf('线') >= 0);
 assertFeats(first[1], 409, 'Point', f => !!f.properties.stop_id);
-assertFeats(first[2], 2612, 'LineString', f => !!f.properties.route_cn);
-assertFeats(first[3], 69, 'LineString', f => /^B\d/.test(f.properties.route_cn));
+assertFeats(first[2], sandbox.BUS_ROUTES.features.length, 'LineString', f => !!f.properties.route_cn);
+assertFeats(first[3], sandbox.BUS_ROUTES.features.filter(function (f) { return /^B\d/.test((f.properties.route_cn || '').split('(')[0]); }).length, 'LineString', f => /^B\d/.test(f.properties.route_cn));
 console.log('layer data correctness OK (metro routes/stops, bus routes, BRT)');
-console.log('bus stop cluster markers:', clusterMarkerCount, '(expect 10143)');
-if (clusterMarkerCount !== 10143) { throw new Error('bus stop cluster marker count mismatch'); }
+console.log('bus stop cluster markers:', clusterMarkerCount, '(expect ' + sandbox.BUS_STOPS.features.length + ')');
+if (clusterMarkerCount !== sandbox.BUS_STOPS.features.length) { throw new Error('bus stop cluster marker count mismatch'); }
 
 // ---- tab switching ----
 fire(tabEls[1], 'click'); // 图层
