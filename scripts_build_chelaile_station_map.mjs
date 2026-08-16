@@ -91,8 +91,13 @@ for (const r of mapRows) {
   g.chNames.add(r[3]);
   phyGroups.set(r[4], g);
 }
-function hasTerminal(names) { return [...names].some((n) => n.indexOf('总站') >= 0 || /总$/.test(n)); }
-function hasNonTerminal(names) { return [...names].some((n) => n.indexOf('总站') < 0); }
+function stripClusterSuffix(n) { return String(n).replace(/#\d+$/, ''); }
+function isTerminalName(n) {
+  const s = stripClusterSuffix(n);
+  return s.indexOf('总站') >= 0 || /总$/.test(s);
+}
+function hasTerminal(names) { return [...names].some(isTerminalName); }
+function hasNonTerminal(names) { return [...names].some((n) => !isTerminalName(n)); }
 const mergeRows = [];
 const terminalRows = [];
 for (const [id, g] of phyGroups) {
@@ -113,6 +118,37 @@ writeCsv(`${OUT_DIR}/分站合并核对_应合并.csv`,
 writeCsv(`${OUT_DIR}/分站合并核对_总站异站.csv`,
   ['physicalStId', '涉及合并站', 'BV站点ID', '车来了站名', 'BV站数', '说明'],
   terminalRows);
+
+// ---------- 3.5) 应合并候选分类：①写法差异 ②名字不同 ③括号内容不同 ----------
+function parseName(n) {
+  const s = stripClusterSuffix(n);
+  const m = s.match(/[（(]([^（）()]*)[）)]$/);
+  const paren = m ? m[1] : '';
+  let base = s.replace(/[（(][^（）()]*[）)]/g, '');
+  base = base.replace(/公共汽车|BRT/g, '')
+    .replace(/(总站|首末站|站|分站)$/, '')
+    .replace(/总$/, '')
+    .replace(/[①②③④⑤⑥⑦⑧⑨⑩]/g, '')
+    .replace(/\d+$/, '')
+    .replace(/\s+/g, '');
+  return { base, paren: paren.replace(/(总站|首末站|站|分站)$/, '') };
+}
+const class1 = [], class2 = [], class3 = [];
+let terminalLeak = 0;
+for (const row of mergeRows) {
+  const names = row[1].split(' / ');
+  if (hasTerminal(names) && hasNonTerminal(names)) { terminalLeak++; }
+  const parsed = names.map(parseName);
+  const bases = new Set(parsed.map((p) => p.base).filter(Boolean));
+  const parens = new Set(parsed.map((p) => p.paren).filter(Boolean));
+  const label = `${names.join(' ↔ ')}  [${row[3]}]`;
+  if (bases.size > 1) class2.push([label, row[2]]);
+  else if (parens.size > 1) class3.push([label, row[2]]);
+  else class1.push([label, row[2]]);
+}
+writeCsv(`${OUT_DIR}/分站合并核对_分类1_写法差异.csv`, ['候选', 'BV站点ID'], class1);
+writeCsv(`${OUT_DIR}/分站合并核对_分类2_名字不同.csv`, ['候选', 'BV站点ID'], class2);
+writeCsv(`${OUT_DIR}/分站合并核对_分类3_括号内容不同.csv`, ['候选', 'BV站点ID'], class3);
 
 // ---------- 4) 同一合并站跨多个同名站组（待甄别） ----------
 const stationGroups = new Map(); // 合并站名 -> {nameGroups:Map, bvs:Set, lngs:Set, lats:Set}
@@ -157,6 +193,8 @@ console.log(`同名站组数：${nameRows.length}；物理站台数：${phyGroup
 console.log(`应合并（同物理站台跨合并站，剔除总站混合）：${mergeRows.length} 组`);
 console.log(`总站与非总站混合（不自动合并，人工判断）：${terminalRows.length} 组`);
 console.log(`待甄别（同合并站跨同名站组）：${reviewRows.length} 组（需核对 ${reviewRows.filter((r) => r[3] === '需核对').length}）`);
+console.log(`应合并分类：①写法差异 ${class1.length} / ②名字不同 ${class2.length} / ③括号内容不同 ${class3.length}`);
+console.log(`应合并中总站/非总站漏网：${terminalLeak} 组`);
 console.log('\n== 应合并 Top10 ==');
 mergeRows.slice(0, 10).forEach((r) => console.log('  ', r[0].slice(0, 8), '|', r[1]));
 console.log('\n== 待甄别-需核对 Top15 ==');
