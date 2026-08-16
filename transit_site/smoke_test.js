@@ -213,6 +213,17 @@ console.log('route suggestion rendered:', created.length, 'item(s)');
 });
 console.log('search single-digit ranking OK');
 
+// ---- 110/113 补线（源数据缺失，已从车来了补入） ----
+['110', '113'].forEach(function (d) {
+  const k = Object.keys(sandbox.BUS_ROUTE_STOPS).find(function (kk) { return kk.indexOf(d + '路(') === 0; });
+  if (!k) { throw new Error(d + '路 missing from route stops'); }
+  const cand = sandbox.__APP_DEBUG__.routeCandidates(d);
+  if (!cand.length || cand[0].num !== d + '路') {
+    throw new Error('search "' + d + '" should find ' + d + '路, got ' + (cand[0] && cand[0].num));
+  }
+});
+console.log('110/113 补线搜索 OK');
+
 // ---- pinyin search ----
 const ycdHit = sandbox.__APP_DEBUG__.stopCandidates('ycd');
 if (!ycdHit.some(function (o) { return o.name.indexOf('员村东') >= 0; })) {
