@@ -446,8 +446,26 @@
 
   // ---------- 平台坐标附属数据（合并站 -> 分站明细，为将来分站级显示预留） ----------
   var stationPlatforms = {};
+  var platformRecById = {};
+  var CN_NUMS = ['', '①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩'];
+  function platformLabel(p) {
+    if (p.platformNo == null) { return p.name; }
+    var base = String(p.name).replace(/\d+$/, '').replace(/[①-⑩]$/, '');
+    return base + (CN_NUMS[p.platformNo] || String(p.platformNo));
+  }
   function buildStationPlatforms() {
     stationPlatforms = {};
+    platformRecById = {};
+    var src = window.STATION_PLATFORMS;
+    if (src && src.length) {
+      src.forEach(function (p) {
+        var rec = { name: p.name, id: p.id, lng: p.lng, lat: p.lat, platformNo: p.platformNo, chName: p.chName || '', stationName: p.stationName };
+        platformRecById[p.id] = rec;
+        var arr = stationPlatforms[p.stationName] || (stationPlatforms[p.stationName] = []);
+        if (!arr.some(function (x) { return x.id === p.id; })) { arr.push(rec); }
+      });
+      return;
+    }
     Object.keys(BUS_ROUTE_STOPS).forEach(function (k) {
       (BUS_ROUTE_STOPS[k] || []).forEach(function (st) {
         var key = isGenericStop(st[1]) ? ('G:' + st[2]) : displayStopName(st[1]);
@@ -1261,9 +1279,11 @@
         if (!routeSet[r]) { routeSet[r] = true; routes.push(r); }
       });
     });
-    var plat = stationPlatforms[dn] || [];
+    var plat = platformRecById[stopId]
+      ? (stationPlatforms[platformRecById[stopId].stationName] || [])
+      : (stationPlatforms[dn] || []);
     var platLine = plat.length > 1
-      ? '<div class="co-hint">平台（' + plat.length + '）：' + plat.map(function (p) { return esc(p.name); }).join('、') + '</div>'
+      ? '<div class="co-hint">平台（' + plat.length + '）：' + plat.map(function (p) { return esc(platformLabel(p)); }).join('、') + '</div>'
       : '';
     var backBtn = backStack.length
       ? '<button class="btn ghost back-btn" id="back-btn">← 返回 ' + esc(backEntryLabel(backStack[backStack.length - 1])) + '</button>'

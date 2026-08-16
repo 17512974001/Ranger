@@ -65,8 +65,8 @@ for (const f of BUS_STOPS.features) {
   const name = f.properties.name_cn;
   const st = stationOf[id] || { stationId: name, stationName: name };
   const chNames = chInfo[id] ? [...chInfo[id].names] : [];
-  // 编号：优先车来了编号名，其次本地名后缀
-  const numbered = chNames.find((n) => numOf(n) != null) || name;
+  // 编号：优先本地名后缀（国防大厦2→2），车来了编号作补充
+  const numbered = numOf(name) != null ? name : (chNames.find((n) => numOf(n) != null) || name);
   const platformNo = numOf(numbered);
   const lines = {};
   for (const [base, dirs] of Object.entries(linesOf[id] || {})) {
