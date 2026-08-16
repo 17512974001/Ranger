@@ -1,0 +1,1225 @@
+{
+  "busDisMaxCount": 2,
+  "buses": [
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "ff17b4a04916861722b8fa9b3e79e9a6",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 49,
+      "distanceToSc": 0,
+      "distanceToWaitStn": 21570,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.089230358600616,
+      "licence": "",
+      "link": "",
+      "lng": 113.525510430336,
+      "mTicket": 0,
+      "mileage": 400,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 2,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 2,
+      "speed": 1.1,
+      "state": 1,
+      "syncTime": 8,
+      "tagDesc": "黄埔新城(沙步一横路)总站-永和(崇和花园)总站",
+      "timeStr": "2026-08-16 18:31:29",
+      "travels": [
+        {
+          "arrivalTime": 1786880305366,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786880305366,
+          "optimisticTime": 4008,
+          "order": 33,
+          "pRate": -1,
+          "recommTip": "19:38",
+          "travelTime": 4008
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "3eda1bf1b04513e6d6c6a4f56f9406cf",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 37.05754133624578,
+      "distanceToSc": 0,
+      "distanceToWaitStn": 17589,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.113477528095245,
+      "licence": "",
+      "link": "",
+      "lng": 113.5368400812149,
+      "mTicket": 0,
+      "mileage": 4373,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 9,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 9,
+      "speed": 5,
+      "state": 1,
+      "syncTime": 3,
+      "tagDesc": "黄埔新城(沙步一横路)总站-永和(崇和花园)总站",
+      "timeStr": "2026-08-16 18:31:34",
+      "travels": [
+        {
+          "arrivalTime": 1786879505366,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786879505366,
+          "optimisticTime": 3208,
+          "order": 33,
+          "pRate": -1,
+          "recommTip": "19:25",
+          "travelTime": 3208
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "8c54edeab8dd4ec2e2e3c442456702d5",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 366.67022113543135,
+      "distanceToSc": 0,
+      "distanceToWaitStn": 11034,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.166177570819855,
+      "licence": "",
+      "link": "",
+      "lng": 113.52362215518951,
+      "mTicket": 0,
+      "mileage": 10887,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 18,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 18,
+      "speed": 5,
+      "state": 1,
+      "syncTime": 1,
+      "tagDesc": "黄埔新城(沙步一横路)总站-永和(崇和花园)总站",
+      "timeStr": "2026-08-16 18:31:37",
+      "travels": [
+        {
+          "arrivalTime": 1786878239366,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786878239366,
+          "optimisticTime": 1942,
+          "order": 33,
+          "pRate": -1,
+          "recommTip": "19:03",
+          "travelTime": 1942
+        }
+      ],
+      "updateFrom": 1,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "b96e17fa0f0a8c18894e3af6a0a2a5a9",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 26.642254285801755,
+      "distanceToSc": 0,
+      "distanceToWaitStn": 4452,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.190161883831024,
+      "licence": "",
+      "link": "",
+      "lng": 113.56518566608429,
+      "mTicket": 0,
+      "mileage": 17509,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 27,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 27,
+      "speed": 1,
+      "state": 1,
+      "syncTime": 1,
+      "tagDesc": "黄埔新城(沙步一横路)总站-永和(崇和花园)总站",
+      "timeStr": "2026-08-16 18:31:36",
+      "travels": [
+        {
+          "arrivalTime": 1786877101366,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786877101366,
+          "optimisticTime": 804,
+          "order": 33,
+          "pRate": -1,
+          "recommTip": "18:45",
+          "travelTime": 804
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "0e54291b27f476ae87221b994caf7341",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 261.57337870980336,
+      "distanceToSc": 376,
+      "distanceToWaitStn": 4190,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.18924993276596,
+      "licence": "",
+      "link": "",
+      "lng": 113.56674134731293,
+      "mTicket": 0,
+      "mileage": 17744,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 28,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 28,
+      "speed": 4.6,
+      "state": 0,
+      "syncTime": 1,
+      "tagDesc": "黄埔新城(沙步一横路)总站-永和(崇和花园)总站",
+      "timeStr": "2026-08-16 18:31:36",
+      "travels": [
+        {
+          "arrivalTime": 1786877030366,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786877030366,
+          "optimisticTime": 733,
+          "order": 33,
+          "pRate": -1,
+          "recommTip": "18:43",
+          "travelTime": 733
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    }
+  ],
+  "depDesc": "",
+  "depIntervalM": -1,
+  "depTable": 1,
+  "depTableDiversionApp": 0,
+  "departLeft": 0,
+  "departRight": 0,
+  "displayPolicy": 0,
+  "fav": 0,
+  "feed": 0,
+  "feedbackDis": 1,
+  "firstIsLast": 0,
+  "histimeRefreshType": 0,
+  "intervalLeft": -1,
+  "intervalRight": -1,
+  "isAdsExpand": 0,
+  "isFlowExpand": 0,
+  "isStnAdsExpand": 1,
+  "isTurnback": 0,
+  "jxPath": "http://api.chelaile.net.cn/basesearch/client/ljx/040/020-05662-0/1785639727000",
+  "line": {
+    "afterEndOperatingTimeHalfHour": false,
+    "arrivingStationLimitSeconds": 0,
+    "assistDesc": "",
+    "depIntervalM": -1,
+    "desc": "",
+    "destinationName": "永和（崇和花园）总站",
+    "direction": 0,
+    "endSn": "永和（崇和花园）总站",
+    "firstTime": "06:10",
+    "h5NewStyle": 0,
+    "hasBusInfo": false,
+    "isSubway": 0,
+    "judgeLine": 1,
+    "lastTime": "21:30",
+    "lineDisplayTags": [],
+    "lineId": "020-05662-0",
+    "lineNo": "05662",
+    "maxJoinOrder": 0,
+    "name": "566",
+    "notNeedRealData": false,
+    "price": "3元",
+    "priceExpansion": "",
+    "realCityId": "040",
+    "segTimes": [
+      [
+        "06:10",
+        "21:30"
+      ]
+    ],
+    "sfNotOpen": false,
+    "shortDesc": "",
+    "sortPolicy": "spolicy=0",
+    "startSn": "黄埔新城（沙步一横路）总站",
+    "state": 0,
+    "stationsNum": 33,
+    "temOperation": false,
+    "thirdDir": 0,
+    "type": 0,
+    "useDesc": true,
+    "version": ""
+  },
+  "morePreArrivalBus": 0,
+  "notify": 0,
+  "otherlines": [
+    {
+      "endSn": "黄埔新城（沙步一横路）总站",
+      "firstTime": "06:10",
+      "lastTime": "21:30",
+      "lineId": "020-05662-1",
+      "price": "3元",
+      "startSn": "永和（崇和花园）总站"
+    }
+  ],
+  "preArrivalTime": "",
+  "preArrivalTimeRate": 0,
+  "preTimeDataType": -1,
+  "predictionLink": "https://web.chelaile.net.cn/app-relate/h5-forecast/index.html?wtb=1&referer_key=line_detail",
+  "predictionText": "发车\n时间",
+  "realData": false,
+  "refreshInterval": 0,
+  "roads": [
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 351,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 241,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 528,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 505,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 517,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 458,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 1373,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 359,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 2018,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 563,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 660,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 449,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 695,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 832,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 291,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 671,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 376,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 282,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 650,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 851,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 2702,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 659,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 349,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 424,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 149,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 516,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.48,
+        "TVL": 1,
+        "mile": 306,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.36,
+        "TVL": 2,
+        "mile": 229,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.16,
+        "TVL": 1,
+        "mile": 102,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 673,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 286,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 703,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 264,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 1888,
+        "specialType": 0
+      }
+    ]
+  ],
+  "secondIsLast": 0,
+  "seconds": 0,
+  "specialTargetOrder": 33,
+  "stateDisType": 0,
+  "stations": [
+    {
+      "distanceToSp": 0,
+      "lat": 23.092505955601325,
+      "lng": 113.53954453624343,
+      "metros": [],
+      "namesakeStId": "c85b5d140804dc2947ed2749bbc28a76",
+      "order": 1,
+      "physicalStId": "008a97c30d4c498786cfc2f4d01cd0c3",
+      "sId": "020-27284",
+      "sn": "黄埔新城（沙步一横路）总站",
+      "special": 0,
+      "specialOrder": 1,
+      "wgsLat": 23.089016,
+      "wgsLng": 113.527876
+    },
+    {
+      "distanceToSp": 351,
+      "lat": 23.09243720329712,
+      "lng": 113.5371573169504,
+      "metros": [],
+      "namesakeStId": "228c788ba84e463bc47d214d75892356",
+      "order": 2,
+      "physicalStId": "b652879f14a14b228c7f2ead42b8b3f4",
+      "sId": "020-25096",
+      "sn": "沙步大道",
+      "special": 0,
+      "specialOrder": 2,
+      "wgsLat": 23.088916,
+      "wgsLng": 113.525486
+    },
+    {
+      "distanceToSp": 241,
+      "lat": 23.09429971896375,
+      "lng": 113.53779511617955,
+      "metros": [],
+      "namesakeStId": "e9c597538ca17338429578bac0518678",
+      "order": 3,
+      "physicalStId": "a2a30e6ded53456ab6c6ce08897352ba",
+      "sId": "020-26537",
+      "sn": "塘头②",
+      "special": 0,
+      "specialOrder": 3,
+      "wgsLat": 23.090786,
+      "wgsLng": 113.526126
+    },
+    {
+      "distanceToSp": 528,
+      "lat": 23.096789749417162,
+      "lng": 113.5420593649614,
+      "metros": [],
+      "namesakeStId": "2a976c16157d1bcd19f4748eb3f5b290",
+      "order": 4,
+      "physicalStId": "312a15c66f934837b022f151d1eb797e",
+      "sId": "020-26059",
+      "sn": "丹水坑①",
+      "special": 0,
+      "specialOrder": 4,
+      "wgsLat": 23.093336,
+      "wgsLng": 113.530396
+    },
+    {
+      "distanceToSp": 505,
+      "lat": 23.099171645079405,
+      "lng": 113.54615632453958,
+      "metros": [
+        {
+          "color": "136,134,0",
+          "fullName": "地铁13号线",
+          "lineId": "1206",
+          "lineNo": "13号线"
+        }
+      ],
+      "namesakeStId": "e17230c33fa14c44950678ab5a4259df",
+      "order": 5,
+      "physicalStId": "762fb288cb164d0ab658710a129da629",
+      "sId": "020-9257",
+      "sn": "南岗化工厂",
+      "special": 0,
+      "specialOrder": 5,
+      "wgsLat": 23.095786,
+      "wgsLng": 113.534496
+    },
+    {
+      "distanceToSp": 517,
+      "lat": 23.102847630731638,
+      "lng": 113.54913356150345,
+      "metros": [
+        {
+          "color": "136,134,0",
+          "fullName": "地铁13号线",
+          "lineId": "1206",
+          "lineNo": "13号线"
+        }
+      ],
+      "namesakeStId": "4c203a9693bbdc877d681c45529ba00b",
+      "order": 6,
+      "physicalStId": "eb9c05b91013404884df3043de51ed5a",
+      "sId": "020-9258",
+      "sn": "南岗",
+      "special": 0,
+      "specialOrder": 6,
+      "wgsLat": 23.099516,
+      "wgsLng": 113.537476
+    },
+    {
+      "distanceToSp": 458,
+      "lat": 23.106070668890958,
+      "lng": 113.5516016858515,
+      "metros": [],
+      "namesakeStId": "82ae69e8e547476f3bc280a4d315d55f",
+      "order": 7,
+      "physicalStId": "1ff5ea27809c4131802b057f3c5bfd77",
+      "sId": "020-9259",
+      "sn": "东区路口",
+      "special": 0,
+      "specialOrder": 7,
+      "wgsLat": 23.102786,
+      "wgsLng": 113.539946
+    },
+    {
+      "distanceToSp": 1373,
+      "lat": 23.113800203861643,
+      "lng": 113.54963346609834,
+      "metros": [],
+      "namesakeStId": "664e9db7dba7b0fc9f541a6dd5e0ddf1",
+      "order": 8,
+      "physicalStId": "bfd251850b4a4e3aa3e182c3944aa67d",
+      "sId": "020-17916",
+      "sn": "宏光路口",
+      "special": 0,
+      "specialOrder": 8,
+      "wgsLat": 23.110476,
+      "wgsLng": 113.537986
+    },
+    {
+      "distanceToSp": 359,
+      "lat": 23.116833190157774,
+      "lng": 113.54845047412832,
+      "metros": [],
+      "namesakeStId": "2c3b02ffb97724aef4ee9bc1e967b28b",
+      "order": 9,
+      "physicalStId": "fffdd77281e24599ab41c60b36a3db3f",
+      "sId": "020-1066",
+      "sn": "严田村",
+      "special": 0,
+      "specialOrder": 9,
+      "wgsLat": 23.113486,
+      "wgsLng": 113.536806
+    },
+    {
+      "distanceToSp": 2018,
+      "lat": 23.13377964311757,
+      "lng": 113.54134340666957,
+      "metros": [],
+      "namesakeStId": "5a87dbd4a71be1cc46e8039b4ff42b02",
+      "order": 10,
+      "physicalStId": "5730bc20d2894f76a0bce3a98c33bd29",
+      "sId": "020-14341",
+      "sn": "开创大道（连云路口）",
+      "special": 0,
+      "specialOrder": 10,
+      "wgsLat": 23.130306,
+      "wgsLng": 113.529706
+    },
+    {
+      "distanceToSp": 563,
+      "lat": 23.138509830998665,
+      "lng": 113.540104584732,
+      "metros": [],
+      "namesakeStId": "32c4b3809aa7cfa103858b6f90117d43",
+      "order": 11,
+      "physicalStId": "4f306842c55b444c817fc6c8b907f121",
+      "sId": "020-14342",
+      "sn": "开创大道中（南方物流）",
+      "special": 0,
+      "specialOrder": 11,
+      "wgsLat": 23.135016,
+      "wgsLng": 113.528466
+    },
+    {
+      "distanceToSp": 660,
+      "lat": 23.143974760042884,
+      "lng": 113.53847794220113,
+      "metros": [],
+      "namesakeStId": "16c6d8c2b42eee7550899ab9071d7cf0",
+      "order": 12,
+      "physicalStId": "7bff3184b4e24bb3bc232afe978be635",
+      "sId": "020-14343",
+      "sn": "骏业路口（佳大时代公寓）",
+      "special": 0,
+      "specialOrder": 12,
+      "wgsLat": 23.140456,
+      "wgsLng": 113.526836
+    },
+    {
+      "distanceToSp": 449,
+      "lat": 23.147226569403696,
+      "lng": 113.53602295436272,
+      "metros": [],
+      "namesakeStId": "916898b4a52b928b0681b450a0c007f0",
+      "order": 13,
+      "physicalStId": "7e9a8e7af9e74dc98b4f5a5f848b1854",
+      "sId": "020-9262",
+      "sn": "荷村",
+      "special": 0,
+      "specialOrder": 13,
+      "wgsLat": 23.143676,
+      "wgsLng": 113.524376
+    },
+    {
+      "distanceToSp": 695,
+      "lat": 23.153267975099077,
+      "lng": 113.53432036718858,
+      "metros": [],
+      "namesakeStId": "634cd814d661eb8077b7ca884b86ba16",
+      "order": 14,
+      "physicalStId": "82ec288cb4644296b61a5b4e64149312",
+      "sId": "020-9263",
+      "sn": "云埔工业区",
+      "special": 0,
+      "specialOrder": 14,
+      "wgsLat": 23.149696,
+      "wgsLng": 113.522666
+    },
+    {
+      "distanceToSp": 832,
+      "lat": 23.160538747868127,
+      "lng": 113.53252105243992,
+      "metros": [],
+      "namesakeStId": "729659b0914be6fc4d1bc32e61e65541",
+      "order": 15,
+      "physicalStId": "b82ebd5152144bfdb5003398c1e0c7ea",
+      "sId": "020-25792",
+      "sn": "京广协同创新中心",
+      "special": 0,
+      "specialOrder": 15,
+      "wgsLat": 23.156946,
+      "wgsLng": 113.520856
+    },
+    {
+      "distanceToSp": 291,
+      "lat": 23.162187591389504,
+      "lng": 113.53386998188056,
+      "metros": [],
+      "namesakeStId": "534e985dcd9a0f75f44dea4e2d6405f2",
+      "order": 16,
+      "physicalStId": "d8f2f9403ee9483595ee58be5e911678",
+      "sId": "020-13283",
+      "sn": "云埔四路",
+      "special": 0,
+      "specialOrder": 16,
+      "wgsLat": 23.158606,
+      "wgsLng": 113.522206
+    },
+    {
+      "distanceToSp": 671,
+      "lat": 23.166554758746383,
+      "lng": 113.53628056617977,
+      "metros": [],
+      "namesakeStId": "c7dae4cb78de84ec1d0ea623c52afeb5",
+      "order": 17,
+      "physicalStId": "9f0b3dc369c34b55977e15079b07aef4",
+      "sId": "020-25144",
+      "sn": "云信路（玉泉学校）",
+      "special": 0,
+      "specialOrder": 17,
+      "wgsLat": 23.162996,
+      "wgsLng": 113.524616
+    },
+    {
+      "distanceToSp": 376,
+      "lat": 23.169768206175178,
+      "lng": 113.5352457013741,
+      "metros": [],
+      "namesakeStId": "36cf2da6cea1abe9c909423f8f4e8beb",
+      "order": 18,
+      "physicalStId": "8f6010c7d4384b698a182426c0ac57ef",
+      "sId": "020-25143",
+      "sn": "云信路北",
+      "special": 0,
+      "specialOrder": 18,
+      "wgsLat": 23.166196,
+      "wgsLng": 113.523576
+    },
+    {
+      "distanceToSp": 282,
+      "lat": 23.171653196594203,
+      "lng": 113.53580678896903,
+      "metros": [],
+      "namesakeStId": "d6906633ea8a8bc054c3556ba7fdf9f3",
+      "order": 19,
+      "physicalStId": "65b91165859b460a950f53fa63e21c1b",
+      "sId": "020-25145",
+      "sn": "开源大道（云信路口）",
+      "special": 0,
+      "specialOrder": 19,
+      "wgsLat": 23.168086,
+      "wgsLng": 113.524136
+    },
+    {
+      "distanceToSp": 650,
+      "lat": 23.173717977931478,
+      "lng": 113.54155278607521,
+      "metros": [],
+      "namesakeStId": "da1681a68c4c8ac47251065d46739552",
+      "order": 20,
+      "physicalStId": "5f4330b8e57d43a99b9bb05a9efa9f74",
+      "sId": "020-25128",
+      "sn": "开源大道（岭南雅筑）",
+      "special": 0,
+      "specialOrder": 20,
+      "wgsLat": 23.170226,
+      "wgsLng": 113.529886
+    },
+    {
+      "distanceToSp": 851,
+      "lat": 23.178524422880937,
+      "lng": 113.54780654262969,
+      "metros": [],
+      "namesakeStId": "508acb93d49db758c6e83256cd06cb40",
+      "order": 21,
+      "physicalStId": "23d83f0bf39e43df865e4c8a94f6a6b4",
+      "sId": "020-1074",
+      "sn": "永和隧道南",
+      "special": 0,
+      "specialOrder": 21,
+      "wgsLat": 23.175136,
+      "wgsLng": 113.536136
+    },
+    {
+      "distanceToSp": 2702,
+      "lat": 23.199380542606292,
+      "lng": 113.55919342189391,
+      "metros": [],
+      "namesakeStId": "f7b54234720361716b54b4e9c0b24a59",
+      "order": 22,
+      "physicalStId": "432b9674c9b84e07b7358b2bdecf8b8b",
+      "sId": "020-8268",
+      "sn": "永和大道中",
+      "special": 0,
+      "specialOrder": 22,
+      "wgsLat": 23.196206,
+      "wgsLng": 113.547506
+    },
+    {
+      "distanceToSp": 659,
+      "lat": 23.198720103097912,
+      "lng": 113.56499893346407,
+      "metros": [],
+      "namesakeStId": "cbdebd3732552b9716c26ce77b7e3102",
+      "order": 23,
+      "physicalStId": "b310e48a4ed2421ab83d0c1aa8ae22c5",
+      "sId": "020-14528",
+      "sn": "新庄二路（新安路口）",
+      "special": 0,
+      "specialOrder": 23,
+      "wgsLat": 23.195656,
+      "wgsLng": 113.553306
+    },
+    {
+      "distanceToSp": 349,
+      "lat": 23.19794274185793,
+      "lng": 113.56832158175318,
+      "metros": [],
+      "namesakeStId": "3fc4a6cb5a2809253d4543a2515b2556",
+      "order": 24,
+      "physicalStId": "1170c5a785ca415e9dc46e33438717d1",
+      "sId": "020-1004",
+      "sn": "新庄二路",
+      "special": 0,
+      "specialOrder": 24,
+      "wgsLat": 23.194936,
+      "wgsLng": 113.556626
+    },
+    {
+      "distanceToSp": 424,
+      "lat": 23.19702174611579,
+      "lng": 113.57235371849924,
+      "metros": [],
+      "namesakeStId": "5979aeeeec2371d5537769cc3afd8586",
+      "order": 25,
+      "physicalStId": "9bbb06e341384f1fbd166fbc72f1919b",
+      "sId": "020-1035",
+      "sn": "永和开发区",
+      "special": 0,
+      "specialOrder": 25,
+      "wgsLat": 23.194076,
+      "wgsLng": 113.560656
+    },
+    {
+      "distanceToSp": 149,
+      "lat": 23.19666368025729,
+      "lng": 113.5737140959223,
+      "metros": [],
+      "namesakeStId": "3f266b744b8107198b51bdda7dd2c1dd",
+      "order": 26,
+      "physicalStId": "6254529dccd74ef3b6a05e0a99705798",
+      "sId": "020-8270",
+      "sn": "永和综合楼",
+      "special": 0,
+      "specialOrder": 26,
+      "wgsLat": 23.193736,
+      "wgsLng": 113.562016
+    },
+    {
+      "distanceToSp": 516,
+      "lat": 23.19302858663324,
+      "lng": 113.57664381929098,
+      "metros": [],
+      "namesakeStId": "e7b41475137f5424f1c0cc65b4adeaea",
+      "order": 27,
+      "physicalStId": "52a6f169a23c41f38edb5af115e364cf",
+      "sId": "020-8271",
+      "sn": "横迳广场",
+      "special": 0,
+      "specialOrder": 27,
+      "wgsLat": 23.190136,
+      "wgsLng": 113.564946
+    },
+    {
+      "distanceToSp": 638,
+      "lat": 23.19083687213387,
+      "lng": 113.58170098851213,
+      "metros": [],
+      "namesakeStId": "7f1f8de755a8e33f3ff984757fb1ec3b",
+      "order": 28,
+      "physicalStId": "e2eeea1e517449f4be329c8b28cbb650",
+      "sId": "020-9903",
+      "sn": "旺旺食品有限公司",
+      "special": 0,
+      "specialOrder": 28,
+      "wgsLat": 23.187986,
+      "wgsLng": 113.570006
+    },
+    {
+      "distanceToSp": 673,
+      "lat": 23.189049572194875,
+      "lng": 113.58648496482024,
+      "metros": [],
+      "namesakeStId": "9e6ab8ebd0a9604f832d04ffab9e8313",
+      "order": 29,
+      "physicalStId": "b06c8da6eff84526a862c92342d8d46c",
+      "sId": "020-9904",
+      "sn": "永顺大道东",
+      "special": 0,
+      "specialOrder": 29,
+      "wgsLat": 23.186216,
+      "wgsLng": 113.574796
+    },
+    {
+      "distanceToSp": 286,
+      "lat": 23.187308496723308,
+      "lng": 113.58850091761421,
+      "metros": [],
+      "namesakeStId": "7d71ad6b3cf5e70cab00d38a2dff8935",
+      "order": 30,
+      "physicalStId": "e01e19c923b9427a9e2d7b505bfc55e4",
+      "sId": "020-14529",
+      "sn": "永顺大道（民兵路口）",
+      "special": 0,
+      "specialOrder": 30,
+      "wgsLat": 23.184476,
+      "wgsLng": 113.576816
+    },
+    {
+      "distanceToSp": 703,
+      "lat": 23.184085499341997,
+      "lng": 113.5938975290573,
+      "metros": [],
+      "namesakeStId": "193b2be5e0d5cd2516b7735d69bc0469",
+      "order": 31,
+      "physicalStId": "4d8c0826464a4694afa4cbf7bf1928e9",
+      "sId": "020-8275",
+      "sn": "顺龙厂",
+      "special": 0,
+      "specialOrder": 31,
+      "wgsLat": 23.181236,
+      "wgsLng": 113.582226
+    },
+    {
+      "distanceToSp": 264,
+      "lat": 23.184373739637497,
+      "lng": 113.59644094209257,
+      "metros": [],
+      "namesakeStId": "bdc4b78a46d19a0824e2f6145b3babdb",
+      "order": 32,
+      "physicalStId": "eb61b4676b3d405b927122adffeaa9ea",
+      "sId": "020-28089",
+      "sn": "永宁南A站",
+      "special": 0,
+      "specialOrder": 32,
+      "wgsLat": 23.181506,
+      "wgsLng": 113.584776
+    },
+    {
+      "distanceToSp": 1888,
+      "lat": 23.175688912411413,
+      "lng": 113.60210611891821,
+      "metros": [],
+      "namesakeStId": "c0477dc46f8af5d411cd7347944c07f6",
+      "order": 33,
+      "physicalStId": "b5d2d817122e442bb8e25bf96e351f9a",
+      "sId": "020-14577",
+      "sn": "永和（崇和花园）总站",
+      "special": 0,
+      "specialOrder": 33,
+      "wgsLat": 23.172766,
+      "wgsLng": 113.590466
+    }
+  ],
+  "stnDisplayRule": 0,
+  "targetOrder": 33,
+  "timeFrom": -1,
+  "tip": {
+    "desc": "还有12分钟，公交出行签个到",
+    "destType": 1
+  },
+  "toast": "定位失败，请手动选择站点",
+  "traffic": 0,
+  "updateTipsType": 0
+}

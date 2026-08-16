@@ -12,6 +12,12 @@ _parsed_bus.json
 web_data/
 brt_output/
 
+# 车来了抓取缓存（1411 个小文件，可由 scripts_fetch_chelaile.mjs 重新生成；如需入库可合并为单文件）
+data/chelaile_raw/
+
+# 数据修复前备份（保留本地，不随仓库上传）
+output/network/backup_*/
+
 # 系统与编辑器
 .DS_Store
 Thumbs.db

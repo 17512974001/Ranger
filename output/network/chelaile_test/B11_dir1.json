@@ -1,0 +1,1559 @@
+{
+  "busDisMaxCount": 2,
+  "buses": [
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "fedce1673c3ce954105e8eb0f13abcea",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 515.9613336980156,
+      "distanceToSc": 0,
+      "distanceToWaitStn": 20827,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.120429813861847,
+      "licence": "",
+      "link": "",
+      "lng": 113.36547911167145,
+      "mTicket": 0,
+      "mileage": 515,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 2,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 2,
+      "speed": 2.6,
+      "state": 1,
+      "syncTime": 1,
+      "tagDesc": "员村(美林花园)总站-岑村总站",
+      "timeStr": "2026-08-16 18:32:42",
+      "travels": [
+        {
+          "arrivalTime": 1786880834976,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786880834976,
+          "optimisticTime": 4472,
+          "order": 36,
+          "pRate": -1,
+          "recommTip": "19:47",
+          "travelTime": 4472
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "cbfb4b0fcdc47c14a1c753f0889c73fd",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 326.76822925602664,
+      "distanceToSc": 363,
+      "distanceToWaitStn": 16920,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.134978115558624,
+      "licence": "",
+      "link": "",
+      "lng": 113.35689604282379,
+      "mTicket": 0,
+      "mileage": 4467,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 7,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 7,
+      "speed": 8.2,
+      "state": 0,
+      "syncTime": 4,
+      "tagDesc": "员村(美林花园)总站-岑村总站",
+      "timeStr": "2026-08-16 18:32:38",
+      "travels": [
+        {
+          "arrivalTime": 1786880152976,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786880152976,
+          "optimisticTime": 3790,
+          "order": 36,
+          "pRate": -1,
+          "recommTip": "19:35",
+          "travelTime": 3790
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "f4a20f46bf8bf7bd92f2edffc0ac8cbd",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 498.45791211424057,
+      "distanceToSc": 0,
+      "distanceToWaitStn": 12883,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.14408153295517,
+      "licence": "",
+      "link": "",
+      "lng": 113.33397924900055,
+      "mTicket": 0,
+      "mileage": 8504,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 12,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 12,
+      "speed": 5,
+      "state": 1,
+      "syncTime": 3,
+      "tagDesc": "员村(美林花园)总站-岑村总站",
+      "timeStr": "2026-08-16 18:32:39",
+      "travels": [
+        {
+          "arrivalTime": 1786879269976,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786879269976,
+          "optimisticTime": 2907,
+          "order": 36,
+          "pRate": -1,
+          "recommTip": "19:21",
+          "travelTime": 2907
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "6c3ce87b7798c04df7d9614bd2ba242b",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 142.74399548926158,
+      "distanceToSc": 969,
+      "distanceToWaitStn": 9188,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.165238797664642,
+      "licence": "",
+      "link": "",
+      "lng": 113.32586824893951,
+      "mTicket": 0,
+      "mileage": 12206,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 22,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 22,
+      "speed": 2.4,
+      "state": 0,
+      "syncTime": 1,
+      "tagDesc": "员村(美林花园)总站-岑村总站",
+      "timeStr": "2026-08-16 18:32:42",
+      "travels": [
+        {
+          "arrivalTime": 1786878226976,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786878226976,
+          "optimisticTime": 1864,
+          "order": 36,
+          "pRate": -1,
+          "recommTip": "19:03",
+          "travelTime": 1864
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    },
+    {
+      "acBus": 0,
+      "activityLink": "",
+      "airStatus": 0,
+      "assistDesc": "别着急，小车陪你一起等",
+      "awayTag": 0,
+      "beforeBaseIndex": -1,
+      "beforeLat": -1,
+      "beforeLng": -1,
+      "busBaseIndex": -1,
+      "busDesc": "",
+      "busDescIcon": -1,
+      "busDescList": [],
+      "busDescOnLine": "",
+      "busId": "7833f52408ad90e2cdab647006f0aca9",
+      "busTagList": [],
+      "capacity": 0,
+      "cityId": "040",
+      "datasource": 0,
+      "delay": 0,
+      "delayDesc": "",
+      "display": 0,
+      "displayConfig": "time#order#distance",
+      "distToBeforeStopForTimePredict": 11.67138356076066,
+      "distanceToSc": 0,
+      "distanceToWaitStn": 5705,
+      "from": 33,
+      "jrDataSrc": 1600,
+      "lat": 23.170088231563568,
+      "licence": "",
+      "link": "",
+      "lng": 113.35075914859772,
+      "mTicket": 0,
+      "mileage": 15704,
+      "mileageOff": 0,
+      "mileageOn": 0,
+      "nearestToUser": false,
+      "newLink": "",
+      "order": 28,
+      "passStnTimeMS": -1,
+      "rType": 0,
+      "realPositionDisplayFlag": false,
+      "render": true,
+      "shareId": "",
+      "showDistance": 1,
+      "specialOrder": 28,
+      "speed": 0.9,
+      "state": 1,
+      "syncTime": 1,
+      "tagDesc": "员村(美林花园)总站-岑村总站",
+      "timeStr": "2026-08-16 18:32:42",
+      "travels": [
+        {
+          "arrivalTime": 1786877484976,
+          "debusCost": 0,
+          "debusTime": 0,
+          "distance": 0,
+          "optArrivalTime": 1786877484976,
+          "optimisticTime": 1122,
+          "order": 36,
+          "pRate": -1,
+          "recommTip": "18:51",
+          "travelTime": 1122
+        }
+      ],
+      "updateFrom": 32,
+      "userName": "",
+      "userPhoto": ""
+    }
+  ],
+  "depDesc": "",
+  "depIntervalM": -1,
+  "depTable": 1,
+  "depTableDiversionApp": 0,
+  "departLeft": 0,
+  "departRight": 0,
+  "displayPolicy": 0,
+  "fav": 0,
+  "feed": 0,
+  "feedbackDis": 1,
+  "firstIsLast": 0,
+  "histimeRefreshType": 0,
+  "intervalLeft": -1,
+  "intervalRight": -1,
+  "isAdsExpand": 0,
+  "isFlowExpand": 0,
+  "isStnAdsExpand": 1,
+  "isTurnback": 0,
+  "jxPath": "http://api.chelaile.net.cn/basesearch/client/ljx/040/020-80110-1/1785996103000",
+  "line": {
+    "afterEndOperatingTimeHalfHour": false,
+    "arrivingStationLimitSeconds": 0,
+    "assistDesc": "",
+    "depIntervalM": -1,
+    "desc": "",
+    "destinationName": "岑村总站",
+    "direction": 1,
+    "endSn": "岑村总站",
+    "firstTime": "06:00",
+    "h5NewStyle": 0,
+    "hasBusInfo": false,
+    "isSubway": 0,
+    "judgeLine": 1,
+    "lastTime": "22:00",
+    "lineDisplayTags": [],
+    "lineId": "020-80110-1",
+    "lineNo": "80110",
+    "maxJoinOrder": 0,
+    "name": "B11",
+    "notNeedRealData": false,
+    "price": "2元",
+    "priceExpansion": "",
+    "realCityId": "040",
+    "segTimes": [
+      [
+        "06:00",
+        "22:00"
+      ]
+    ],
+    "sfNotOpen": false,
+    "shortDesc": "",
+    "sortPolicy": "spolicy=0",
+    "startSn": "员村（美林花园）总站",
+    "state": 0,
+    "stationsNum": 36,
+    "temOperation": false,
+    "thirdDir": 0,
+    "type": 0,
+    "useDesc": true,
+    "version": ""
+  },
+  "morePreArrivalBus": 0,
+  "notify": 0,
+  "otherlines": [
+    {
+      "endSn": "员村（美林花园）总站",
+      "firstTime": "06:00",
+      "lastTime": "22:00",
+      "lineId": "020-80110-0",
+      "price": "2元",
+      "startSn": "岑村总站"
+    }
+  ],
+  "preArrivalTime": "",
+  "preArrivalTimeRate": 0,
+  "preTimeDataType": -1,
+  "predictionLink": "https://web.chelaile.net.cn/app-relate/h5-forecast/index.html?wtb=1&referer_key=line_detail",
+  "predictionText": "发车\n时间",
+  "realData": false,
+  "refreshInterval": 0,
+  "roads": [
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 558,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.26,
+        "TVL": 1,
+        "mile": 563,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.07,
+        "TVL": 3,
+        "mile": 151,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.14,
+        "TVL": 2,
+        "mile": 303,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.53,
+        "TVL": 1,
+        "mile": 1149,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.98,
+        "TVL": 1,
+        "mile": 412,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.02,
+        "TVL": 3,
+        "mile": 8,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.54,
+        "TVL": 3,
+        "mile": 264,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.46,
+        "TVL": 1,
+        "mile": 225,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 501,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 690,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.82,
+        "TVL": 1,
+        "mile": 1406,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.03,
+        "TVL": 2,
+        "mile": 51,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.15,
+        "TVL": 1,
+        "mile": 257,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 384,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 364,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.8,
+        "TVL": 1,
+        "mile": 569,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.12,
+        "TVL": 2,
+        "mile": 85,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.08,
+        "TVL": 1,
+        "mile": 56,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 500,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.25,
+        "TVL": 1,
+        "mile": 117,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.51,
+        "TVL": 2,
+        "mile": 239,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.24,
+        "TVL": 1,
+        "mile": 112,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 579,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 737,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 184,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 395,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.06,
+        "TVL": 1,
+        "mile": 21,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.18,
+        "TVL": 2,
+        "mile": 64,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.76,
+        "TVL": 1,
+        "mile": 273,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.92,
+        "TVL": 1,
+        "mile": 166,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.08,
+        "TVL": 3,
+        "mile": 14,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 0.11,
+        "TVL": 3,
+        "mile": 47,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.08,
+        "TVL": 2,
+        "mile": 34,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.04,
+        "TVL": 3,
+        "mile": 17,
+        "specialType": 0
+      },
+      {
+        "TPC": 0.77,
+        "TVL": 1,
+        "mile": 332,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 216,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 1111,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 242,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 608,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 217,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 398,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 753,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 296,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 503,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 665,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 733,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 341,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 528,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 759,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 300,
+        "specialType": 0
+      }
+    ],
+    [
+      {
+        "TPC": 1,
+        "TVL": 1,
+        "mile": 1876,
+        "specialType": 0
+      }
+    ]
+  ],
+  "secondIsLast": 0,
+  "seconds": 0,
+  "specialTargetOrder": 36,
+  "stateDisType": 0,
+  "stations": [
+    {
+      "distanceToSp": 0,
+      "lat": 23.121218109646133,
+      "lng": 113.378154943062,
+      "metros": [],
+      "namesakeStId": "e95e8cc97875ba4139a257017dbdb8c4",
+      "order": 1,
+      "physicalStId": "5609a9918cac471c8f623e98027b0d07",
+      "sId": "020-14450",
+      "sn": "员村（美林花园）总站",
+      "special": 0,
+      "specialOrder": 1,
+      "wgsLat": 23.117716,
+      "wgsLng": 113.366176
+    },
+    {
+      "distanceToSp": 558,
+      "lat": 23.12440635006219,
+      "lng": 113.37749453025302,
+      "metros": [],
+      "namesakeStId": "c5c8ea09dc5fbcabcdf665d2a17479ab",
+      "order": 2,
+      "physicalStId": "9c004fb9e4264355a64c06ac6de426d9",
+      "sId": "020-9672",
+      "sn": "员村四横路",
+      "special": 0,
+      "specialOrder": 2,
+      "wgsLat": 23.120916,
+      "wgsLng": 113.365516
+    },
+    {
+      "distanceToSp": 2168,
+      "lat": 23.127430175827403,
+      "lng": 113.37504848070994,
+      "metros": [],
+      "namesakeStId": "042bc440046e2e82e5e436e67b534393",
+      "order": 3,
+      "physicalStId": "8f4139325ef248c99a54cdcb5576930b",
+      "sId": "020-25497",
+      "sn": "员村四横路口③",
+      "special": 0,
+      "specialOrder": 3,
+      "wgsLat": 23.123986,
+      "wgsLng": 113.363066
+    },
+    {
+      "distanceToSp": 421,
+      "lat": 23.128586806552434,
+      "lng": 113.37117589523898,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        },
+        {
+          "color": "136,134,0",
+          "fullName": "地铁13号线",
+          "lineId": "1206",
+          "lineNo": "13号线"
+        },
+        {
+          "color": "11,18,45",
+          "fullName": "地铁21号线",
+          "lineId": "1233",
+          "lineNo": "21号线"
+        }
+      ],
+      "namesakeStId": "1b0129526fc723bcb8144f0735028d76",
+      "order": 4,
+      "physicalStId": "bdabae00c88743f0a54c73362541ecad",
+      "sId": "020-24188",
+      "sn": "程界村③",
+      "special": 0,
+      "specialOrder": 4,
+      "wgsLat": 23.125216,
+      "wgsLng": 113.359186
+    },
+    {
+      "distanceToSp": 490,
+      "lat": 23.131285309451982,
+      "lng": 113.36886935725393,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        },
+        {
+          "color": "136,134,0",
+          "fullName": "地铁13号线",
+          "lineId": "1206",
+          "lineNo": "13号线"
+        },
+        {
+          "color": "11,18,45",
+          "fullName": "地铁21号线",
+          "lineId": "1233",
+          "lineNo": "21号线"
+        }
+      ],
+      "namesakeStId": "a366e79b390d153a3c72e9500136f812",
+      "order": 5,
+      "physicalStId": "f2a5e94d80f645aca049bfd4ece473d0",
+      "sId": "020-21238",
+      "sn": "天府路（地铁天河公园站）",
+      "special": 0,
+      "specialOrder": 5,
+      "wgsLat": 23.127956,
+      "wgsLng": 113.356876
+    },
+    {
+      "distanceToSp": 501,
+      "lat": 23.135753317475874,
+      "lng": 113.36921851153592,
+      "metros": [],
+      "namesakeStId": "f6b7e205d4eba6a004be16bb1e4ea1b4",
+      "order": 6,
+      "physicalStId": "bcd11e9e4a704c39b303792a2e59575b",
+      "sId": "020-9576",
+      "sn": "天河公园",
+      "special": 0,
+      "specialOrder": 6,
+      "wgsLat": 23.132416,
+      "wgsLng": 113.357226
+    },
+    {
+      "distanceToSp": 690,
+      "lat": 23.140155537930752,
+      "lng": 113.36640374886406,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        }
+      ],
+      "namesakeStId": "74671b7c9be1ae4c9742a8ae56483619",
+      "order": 7,
+      "physicalStId": "c4e3071fc7d541bab32ab12f02fd619a",
+      "sId": "020-18727",
+      "sn": "BRT华景新城1",
+      "special": 0,
+      "specialOrder": 7,
+      "wgsLat": 23.136866,
+      "wgsLng": 113.354406
+    },
+    {
+      "distanceToSp": 1714,
+      "lat": 23.141754376934948,
+      "lng": 113.3499666066571,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        },
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线",
+          "lineId": "1077",
+          "lineNo": "3号线"
+        }
+      ],
+      "namesakeStId": "b4759b6d7f1304159a51e59247352e9a",
+      "order": 8,
+      "physicalStId": "e6bc8a1dbd97480297a97232e99f1054",
+      "sId": "020-11843",
+      "sn": "华师附中",
+      "special": 0,
+      "specialOrder": 8,
+      "wgsLat": 23.138656,
+      "wgsLng": 113.337966
+    },
+    {
+      "distanceToSp": 384,
+      "lat": 23.144108073544594,
+      "lng": 113.35045831002097,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        },
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线",
+          "lineId": "1077",
+          "lineNo": "3号线"
+        }
+      ],
+      "namesakeStId": "c19b60f1007bc3db520b42e9d32f0e1a",
+      "order": 9,
+      "physicalStId": "69604e83231f429d9c4e4f2909f5a9aa",
+      "sId": "020-8663",
+      "sn": "天河科技街",
+      "special": 0,
+      "specialOrder": 9,
+      "wgsLat": 23.141006,
+      "wgsLng": 113.338456
+    },
+    {
+      "distanceToSp": 364,
+      "lat": 23.14674267084611,
+      "lng": 113.35253199733863,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        },
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线",
+          "lineId": "1077",
+          "lineNo": "3号线"
+        }
+      ],
+      "namesakeStId": "4397c96ab4c9aa47e68ea555837d7c15",
+      "order": 10,
+      "physicalStId": "43368449e62347ce9d1cab7fccb0bbd1",
+      "sId": "020-9042",
+      "sn": "师大后门",
+      "special": 0,
+      "specialOrder": 10,
+      "wgsLat": 23.143626,
+      "wgsLng": 113.340526
+    },
+    {
+      "distanceToSp": 712,
+      "lat": 23.147312534225176,
+      "lng": 113.35096078978637,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        },
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线",
+          "lineId": "1077",
+          "lineNo": "3号线"
+        }
+      ],
+      "namesakeStId": "3614aaac28f9c66f8ff1c4eed3cbefe4",
+      "order": 11,
+      "physicalStId": "2fd17b409ac941488c9da7c322f26240",
+      "sId": "020-959",
+      "sn": "五山路口",
+      "special": 0,
+      "specialOrder": 11,
+      "wgsLat": 23.144206,
+      "wgsLng": 113.338956
+    },
+    {
+      "distanceToSp": 500,
+      "lat": 23.14708437586065,
+      "lng": 113.34609266959691,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        }
+      ],
+      "namesakeStId": "32409d75d9c79aff44f6bd144eeccda4",
+      "order": 12,
+      "physicalStId": "afa03a5c62f3480aba9a6d5669cef247",
+      "sId": "020-965",
+      "sn": "龙口东",
+      "special": 0,
+      "specialOrder": 12,
+      "wgsLat": 23.143996,
+      "wgsLng": 113.334096
+    },
+    {
+      "distanceToSp": 469,
+      "lat": 23.14731747877875,
+      "lng": 113.34151107618922,
+      "metros": [
+        {
+          "color": "250,188,38",
+          "fullName": "地铁11号线",
+          "lineId": "3024",
+          "lineNo": "11号线"
+        }
+      ],
+      "namesakeStId": "33d741fd811be8705954237ea11fedad",
+      "order": 13,
+      "physicalStId": "3399bbca18804860b113ef147454dc85",
+      "sId": "020-966",
+      "sn": "龙口西",
+      "special": 0,
+      "specialOrder": 13,
+      "wgsLat": 23.144226,
+      "wgsLng": 113.329526
+    },
+    {
+      "distanceToSp": 579,
+      "lat": 23.15073883204536,
+      "lng": 113.33902554331733,
+      "metros": [],
+      "namesakeStId": "ae4d2651783ec187d02cdc438fa5fa4e",
+      "order": 14,
+      "physicalStId": "5fef78cba5f449868870023840e0420f",
+      "sId": "020-773",
+      "sn": "天寿路",
+      "special": 0,
+      "specialOrder": 14,
+      "wgsLat": 23.147636,
+      "wgsLng": 113.327046
+    },
+    {
+      "distanceToSp": 737,
+      "lat": 23.157005810246044,
+      "lng": 113.3405662928244,
+      "metros": [],
+      "namesakeStId": "9779ce79ef33eea65fe8cd865fce467b",
+      "order": 15,
+      "physicalStId": "d29eb1c521584e65b8b9b9b496b15375",
+      "sId": "020-8929",
+      "sn": "春晖苑",
+      "special": 0,
+      "specialOrder": 15,
+      "wgsLat": 23.153906,
+      "wgsLng": 113.328576
+    },
+    {
+      "distanceToSp": 184,
+      "lat": 23.158618334297838,
+      "lng": 113.34014656729933,
+      "metros": [],
+      "namesakeStId": "4928dca3d21084abdfea07103423a9af",
+      "order": 16,
+      "physicalStId": "03ddbb60a25e42be9fe0bbf74f4ff153",
+      "sId": "020-8928",
+      "sn": "农垦总局",
+      "special": 0,
+      "specialOrder": 16,
+      "wgsLat": 23.155516,
+      "wgsLng": 113.328156
+    },
+    {
+      "distanceToSp": 395,
+      "lat": 23.161478959763354,
+      "lng": 113.33827315314782,
+      "metros": [],
+      "namesakeStId": "ad692e44df620147d6dd24fdb9c4c09b",
+      "order": 17,
+      "physicalStId": "6f0038b4e2eb47cbbca690ba51b02d80",
+      "sId": "020-8927",
+      "sn": "粤垦路瑞心苑",
+      "special": 0,
+      "specialOrder": 17,
+      "wgsLat": 23.158366,
+      "wgsLng": 113.326286
+    },
+    {
+      "distanceToSp": 360,
+      "lat": 23.16269041393503,
+      "lng": 113.33523277612585,
+      "metros": [
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线(北延段)",
+          "lineId": "1083",
+          "lineNo": "3北延"
+        },
+        {
+          "color": "187,0,89",
+          "fullName": "地铁6号线",
+          "lineId": "1084",
+          "lineNo": "6号线"
+        }
+      ],
+      "namesakeStId": "69338f2b49cb4ff679050da40ef2b279",
+      "order": 18,
+      "physicalStId": "16a601017bbb4d7382b19ca955c73c91",
+      "sId": "020-8926",
+      "sn": "金燕生活区",
+      "special": 0,
+      "specialOrder": 18,
+      "wgsLat": 23.159556,
+      "wgsLng": 113.323256
+    },
+    {
+      "distanceToSp": 181,
+      "lat": 23.163782372886292,
+      "lng": 113.333908414058,
+      "metros": [
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线(北延段)",
+          "lineId": "1083",
+          "lineNo": "3北延"
+        },
+        {
+          "color": "187,0,89",
+          "fullName": "地铁6号线",
+          "lineId": "1084",
+          "lineNo": "6号线"
+        }
+      ],
+      "namesakeStId": "ab55e0535814c39b05059c45e293ad87",
+      "order": 19,
+      "physicalStId": "5e7d35ffd5704861b5d1afd19004e0ca",
+      "sId": "020-8925",
+      "sn": "燕岭大厦",
+      "special": 0,
+      "specialOrder": 19,
+      "wgsLat": 23.160636,
+      "wgsLng": 113.321936
+    },
+    {
+      "distanceToSp": 432,
+      "lat": 23.166609808229403,
+      "lng": 113.33560856692758,
+      "metros": [
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线(北延段)",
+          "lineId": "1083",
+          "lineNo": "3北延"
+        },
+        {
+          "color": "187,0,89",
+          "fullName": "地铁6号线",
+          "lineId": "1084",
+          "lineNo": "6号线"
+        }
+      ],
+      "namesakeStId": "903e8201007baf7dfd125442aa3bcb24",
+      "order": 20,
+      "physicalStId": "9c77f330f374411883e11053819e1659",
+      "sId": "020-17953",
+      "sn": "燕塘企业3",
+      "special": 0,
+      "specialOrder": 20,
+      "wgsLat": 23.163476,
+      "wgsLng": 113.323626
+    },
+    {
+      "distanceToSp": 216,
+      "lat": 23.167768697334438,
+      "lng": 113.33727632405173,
+      "metros": [
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线(北延段)",
+          "lineId": "1083",
+          "lineNo": "3北延"
+        },
+        {
+          "color": "187,0,89",
+          "fullName": "地铁6号线",
+          "lineId": "1084",
+          "lineNo": "6号线"
+        }
+      ],
+      "namesakeStId": "33c80c7b190af881b4ae92b0874d2b75",
+      "order": 21,
+      "physicalStId": "ac1795a970af49c4a714ff1b0a85671f",
+      "sId": "020-22248",
+      "sn": "武警医院②",
+      "special": 0,
+      "specialOrder": 21,
+      "wgsLat": 23.164646,
+      "wgsLng": 113.325286
+    },
+    {
+      "distanceToSp": 1111,
+      "lat": 23.174018675739774,
+      "lng": 113.34477605389267,
+      "metros": [],
+      "namesakeStId": "7538f2788092f51ac5e0bcc6934f0315",
+      "order": 22,
+      "physicalStId": "d7d9f961c9d84894997b1a6d84d9b7e1",
+      "sId": "020-27268",
+      "sn": "银河园②",
+      "special": 0,
+      "specialOrder": 22,
+      "wgsLat": 23.170916,
+      "wgsLng": 113.332756
+    },
+    {
+      "distanceToSp": 242,
+      "lat": 23.17547103450778,
+      "lng": 113.34638105037126,
+      "metros": [
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线",
+          "lineId": "1077",
+          "lineNo": "3号线"
+        },
+        {
+          "color": "187,0,89",
+          "fullName": "地铁6号线",
+          "lineId": "1084",
+          "lineNo": "6号线"
+        }
+      ],
+      "namesakeStId": "d25da8bedce3b816a44d5b826709c19c",
+      "order": 23,
+      "physicalStId": "3bef63e0db0a4491966d5d91b71f9171",
+      "sId": "020-24683",
+      "sn": "天河客运站①",
+      "special": 0,
+      "specialOrder": 23,
+      "wgsLat": 23.172366,
+      "wgsLng": 113.334356
+    },
+    {
+      "distanceToSp": 608,
+      "lat": 23.1731276997729,
+      "lng": 113.3510462127557,
+      "metros": [
+        {
+          "color": "226,97,0",
+          "fullName": "地铁3号线",
+          "lineId": "1077",
+          "lineNo": "3号线"
+        },
+        {
+          "color": "187,0,89",
+          "fullName": "地铁6号线",
+          "lineId": "1084",
+          "lineNo": "6号线"
+        }
+      ],
+      "namesakeStId": "d4caeed4345547d4cdd97d442910f144",
+      "order": 24,
+      "physicalStId": "1c85872840914bb3b658884cf66db3bd",
+      "sId": "020-12166",
+      "sn": "长福路",
+      "special": 0,
+      "specialOrder": 24,
+      "wgsLat": 23.170006,
+      "wgsLng": 113.339016
+    },
+    {
+      "distanceToSp": 217,
+      "lat": 23.171704225004696,
+      "lng": 113.35217590811895,
+      "metros": [],
+      "namesakeStId": "c8c30756953e630be66f5c85bda83089",
+      "order": 25,
+      "physicalStId": "6ab3955895ef4c7bbe34309ba1d4e676",
+      "sId": "020-12167",
+      "sn": "轻工中专",
+      "special": 0,
+      "specialOrder": 25,
+      "wgsLat": 23.168576,
+      "wgsLng": 113.340146
+    },
+    {
+      "distanceToSp": 398,
+      "lat": 23.17177804986491,
+      "lng": 113.35505783608528,
+      "metros": [],
+      "namesakeStId": "45be2f5d84879f5e8b95dc05ac84c385",
+      "order": 26,
+      "physicalStId": "7882d8304c614a4788df0723b94b9274",
+      "sId": "020-209",
+      "sn": "长福路东",
+      "special": 0,
+      "specialOrder": 26,
+      "wgsLat": 23.168626,
+      "wgsLng": 113.343026
+    },
+    {
+      "distanceToSp": 753,
+      "lat": 23.173493970000553,
+      "lng": 113.35987927374768,
+      "metros": [],
+      "namesakeStId": "2b1f3e095ab66753fd341cc83905a93d",
+      "order": 27,
+      "physicalStId": "6632241535624bd6bd50537955de1c99",
+      "sId": "020-9235",
+      "sn": "长湴市场",
+      "special": 0,
+      "specialOrder": 27,
+      "wgsLat": 23.170286,
+      "wgsLng": 113.347846
+    },
+    {
+      "distanceToSp": 296,
+      "lat": 23.17320445146005,
+      "lng": 113.36274692513315,
+      "metros": [],
+      "namesakeStId": "16a9e0d3fe981db0dfe732a86c6ff1f1",
+      "order": 28,
+      "physicalStId": "d4736257567b4f659cbd30ac2b523d17",
+      "sId": "020-9236",
+      "sn": "伟伦体校",
+      "special": 0,
+      "specialOrder": 28,
+      "wgsLat": 23.169956,
+      "wgsLng": 113.350716
+    },
+    {
+      "distanceToSp": 503,
+      "lat": 23.17341470622022,
+      "lng": 113.36763093582509,
+      "metros": [],
+      "namesakeStId": "1d0810f5ec5667f6b286a72dc80cc9fb",
+      "order": 29,
+      "physicalStId": "140407dbecd64991a9f8ffe989d2a565",
+      "sId": "020-43",
+      "sn": "长兴路东",
+      "special": 0,
+      "specialOrder": 29,
+      "wgsLat": 23.170086,
+      "wgsLng": 113.355606
+    },
+    {
+      "distanceToSp": 665,
+      "lat": 23.17390006989534,
+      "lng": 113.3722730698915,
+      "metros": [],
+      "namesakeStId": "23719df1cfb332f887a6ecd42e12fde8",
+      "order": 30,
+      "physicalStId": "0fa748a0d05c4106b814aa2251007b05",
+      "sId": "020-9030",
+      "sn": "苗圃",
+      "special": 0,
+      "specialOrder": 30,
+      "wgsLat": 23.170486,
+      "wgsLng": 113.360256
+    },
+    {
+      "distanceToSp": 733,
+      "lat": 23.176096172116527,
+      "lng": 113.3782623426317,
+      "metros": [],
+      "namesakeStId": "9efdee86a3da9495e130604afdd7be73",
+      "order": 31,
+      "physicalStId": "ad612b0035654d079439397dd59ffeeb",
+      "sId": "020-25178",
+      "sn": "行云街",
+      "special": 0,
+      "specialOrder": 31,
+      "wgsLat": 23.172566,
+      "wgsLng": 113.366256
+    },
+    {
+      "distanceToSp": 341,
+      "lat": 23.176047137857054,
+      "lng": 113.38149499575493,
+      "metros": [],
+      "namesakeStId": "878a91a3fa92bc990fb778aa79475d98",
+      "order": 32,
+      "physicalStId": "6740c12acb8b4df0bb39ecc22b181b44",
+      "sId": "020-12477",
+      "sn": "岑村公安宿舍",
+      "special": 0,
+      "specialOrder": 32,
+      "wgsLat": 23.172456,
+      "wgsLng": 113.369496
+    },
+    {
+      "distanceToSp": 528,
+      "lat": 23.17455952110122,
+      "lng": 113.38560453210775,
+      "metros": [],
+      "namesakeStId": "e3b24a19fd3e79d86f24c3f3c6008a0d",
+      "order": 33,
+      "physicalStId": "4c5c5510dfdb400e8cfd88916fbc5103",
+      "sId": "020-9029",
+      "sn": "岑村",
+      "special": 0,
+      "specialOrder": 33,
+      "wgsLat": 23.170896,
+      "wgsLng": 113.373616
+    },
+    {
+      "distanceToSp": 759,
+      "lat": 23.171455217542498,
+      "lng": 113.3885254300676,
+      "metros": [],
+      "namesakeStId": "2bd5fc3e7d4c8a303fd3c5bed5763932",
+      "order": 34,
+      "physicalStId": "6b44e3c7fc294294ad2662ef82191166",
+      "sId": "020-10682",
+      "sn": "岑村小学",
+      "special": 0,
+      "specialOrder": 34,
+      "wgsLat": 23.167746,
+      "wgsLng": 113.376546
+    },
+    {
+      "distanceToSp": 300,
+      "lat": 23.16877564042412,
+      "lng": 113.38865231345264,
+      "metros": [],
+      "namesakeStId": "99d4f24b60054035c71c859d0461f14e",
+      "order": 35,
+      "physicalStId": "f096e1b7a00442dfa2efd9236b5953fd",
+      "sId": "020-10681",
+      "sn": "岑村红花岗",
+      "special": 0,
+      "specialOrder": 35,
+      "wgsLat": 23.165066,
+      "wgsLng": 113.376676
+    },
+    {
+      "distanceToSp": 1876,
+      "lat": 23.1654010776124,
+      "lng": 113.38913770821932,
+      "metros": [],
+      "namesakeStId": "b9ee8d21f0007bef3516bf7a83e4ce15",
+      "order": 36,
+      "physicalStId": "704e36fe460e4e098563d58bae271f6a",
+      "sId": "020-158",
+      "sn": "岑村总站",
+      "special": 0,
+      "specialOrder": 36,
+      "wgsLat": 23.161686,
+      "wgsLng": 113.377166
+    }
+  ],
+  "stnDisplayRule": 0,
+  "targetOrder": 36,
+  "timeFrom": -1,
+  "tip": {
+    "desc": "还有19分钟，公交出行签个到",
+    "destType": 1
+  },
+  "toast": "定位失败，请手动选择站点",
+  "traffic": 0,
+  "updateTipsType": 0
+}

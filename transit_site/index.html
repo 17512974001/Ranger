@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>广州公共交通线网</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="vendor/cluster/MarkerCluster.css">
+  <link rel="stylesheet" href="vendor/cluster/MarkerCluster.Default.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,7 +31,7 @@
         <ul class="suggest" id="route-suggest"></ul>
       </div>
       <div class="field">
-        <label for="stop-search">站点搜索（如 梅花村、体育西路）</label>
+        <label for="stop-search">站点搜索（如 梅花村、mhc、体育西路）</label>
         <input id="stop-search" type="text" placeholder="输入站名…" autocomplete="off">
         <ul class="suggest" id="stop-suggest"></ul>
       </div>
@@ -41,15 +41,15 @@
     <section class="tab-body" id="tab-layers">
       <div class="field">
         <label>底图（国内网络推荐高德）</label>
-        <label class="check"><input type="radio" name="basemap" value="gaode" checked> 高德街道（默认，加载快）</label>
-        <label class="check"><input type="radio" name="basemap" value="gaode_img"> 高德影像（卫星图）</label>
-        <label class="check"><input type="radio" name="basemap" value="carto"> 浅色底图</label>
-        <label class="check"><input type="radio" name="basemap" value="osm"> OpenStreetMap（海外）</label>
+                <label class="check"><input type="radio" name="basemap" value="gaode"> 高德街道（加载快）</label>
+                <label class="check"><input type="radio" name="basemap" value="gaode_img"> 高德影像（卫星图）</label>
+                <label class="check"><input type="radio" name="basemap" value="carto" checked> 浅色底图（默认）</label>
+                <label class="check"><input type="radio" name="basemap" value="osm"> OpenStreetMap（海外）</label>
       </div>
-      <label class="check"><input type="checkbox" id="lyr-metro-routes" checked> 地铁线路（彩色=运营，灰虚线=在建/规划）</label>
-      <label class="check"><input type="checkbox" id="lyr-metro-stops" checked> 地铁车站</label>
-      <label class="check"><input type="checkbox" id="lyr-bus-stops" checked> 公交站点（聚合显示）</label>
-      <label class="check"><input type="checkbox" id="lyr-bus-routes" checked> 公交线路（蓝色=BRT）</label>
+            <label class="check"><input type="checkbox" id="lyr-metro-routes"> 地铁线路（彩色=运营，灰虚线=在建/规划）</label>
+            <label class="check"><input type="checkbox" id="lyr-metro-stops"> 地铁车站</label>
+            <label class="check"><input type="checkbox" id="lyr-bus-stops"> 公交站点（聚合显示）</label>
+            <label class="check"><input type="checkbox" id="lyr-bus-routes"> 公交线路（蓝色=BRT）</label>
       <label class="check"><input type="checkbox" id="lyr-brt-only"> 仅显示 BRT（B 字头）</label>
     </section>
 
@@ -67,9 +67,10 @@
   </aside>
 
   <div class="legend" id="legend"></div>
+  <button id="panel-toggle" class="panel-toggle" title="展开/收起面板">☰</button>
 
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/cluster/leaflet.markercluster.js"></script>
   <script src="data/bus_routes.js"></script>
   <script src="data/bus_stops.js"></script>
   <script src="data/metro_routes.js"></script>
@@ -79,6 +80,9 @@
   <script src="data/metro_route_stops.js"></script>
   <script src="data/metro_stop_routes.js"></script>
   <script src="data/metro_bus_feeders.js"></script>
-  <script src="app.js"></script>
+<script src="data/stop_pinyin.js"></script>
+<script src="data/derived_platforms.js"></script>
+<script src="data/chelaile_platform_fixes.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
