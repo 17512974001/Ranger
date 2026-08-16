@@ -1634,6 +1634,8 @@
         var dn = displayStopName(st[1], d.cn);
         var rec = stopDirs[dn] || (stopDirs[dn] = { name: dn, stopId: st[2], dirs: [] });
         if (rec.dirs.indexOf(d.dir) < 0) { rec.dirs.push(d.dir); }
+        rec.stops = rec.stops || {};
+        rec.stops[d.dir] = st;
       });
     });
     dirs.forEach(function (d) {
@@ -1665,19 +1667,26 @@
       });
     });
     if (stopLabelsOn && stopLabelLayer) {
-      var labelGeom = null;
-      if (dirs.length && dirs[0].cn) {
+      function geomOf(cn) {
+        if (!cn) { return null; }
         for (var lg = 0; lg < busFeatures.length; lg++) {
-          if (busFeatures[lg].properties.route_cn === dirs[0].cn && busFeatures[lg].geometry.type === 'LineString') {
-            labelGeom = busFeatures[lg].geometry.coordinates;
-            break;
+          if (busFeatures[lg].properties.route_cn === cn && busFeatures[lg].geometry.type === 'LineString') {
+            return busFeatures[lg].geometry.coordinates;
           }
         }
+        return null;
       }
       Object.keys(stopDirs).forEach(function (dn) {
         var info = stopDirs[dn];
-        var labelDirKey = info.dirs.indexOf('A') >= 0 ? dirs[0].cn : (info.dirs.indexOf('B') >= 0 && dirs[1] ? dirs[1].cn : '');
-        var pos = bestStopPos(labelGeom, dn, info.stopId, labelDirKey);
+        // 用该站所属方向的几何与停靠记录定位（双向都停优先 A 方向），避免与标记错位
+        var idx = info.dirs.indexOf('A') >= 0 ? 0 : (info.dirs.indexOf('B') >= 0 && dirs[1] ? 1 : 0);
+        var d = dirs[idx];
+        if (!d) { return; }
+        var st = (info.stops && info.stops[d.dir]) || (info.stops && info.stops[dirs[0].dir]) || null;
+        if (!st) { return; }
+        var g = geomOf(d.cn);
+        if (!g) { return; }
+        var pos = bestStopPos(g, st[1], st[2], d.cn);
         if (!pos) { return; }
         var c = toMapCoords(pos.coords[0], pos.coords[1]);
         var both = info.dirs.indexOf('A') >= 0 && info.dirs.indexOf('B') >= 0;
