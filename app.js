@@ -319,7 +319,9 @@
   }
   function normStopName(name) {
     // 先去数字分站、再套括号别名，让数字分站继承纯名的站归属（中山纪念堂4 → 中山纪念堂(市总工会)）
-    var s = stripSubMarkers(fixedName(name));
+    var s = fixedName(name);
+    s = (window.STATION_MERGE_MAP || {})[s] || s; // 站名写法差异合并表（分类1）
+    s = stripSubMarkers(s);
     var db = digitBaseName(s);
     if (db) { s = db; }
     s = resolveName(s);

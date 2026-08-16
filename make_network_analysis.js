@@ -39,6 +39,7 @@ const ROUTE_ALIASES = {
 
 const BUS_STOPS = load('BUS_STOPS', 'bus_stops.js');
 const BUS_ROUTE_STOPS = load('BUS_ROUTE_STOPS', 'bus_route_stops.js');
+const STATION_MERGE_MAP = load('STATION_MERGE_MAP', 'station_merge_map.js');
 const busStopById = {};
 BUS_STOPS.features.forEach(function (f) {
   busStopById[f.properties.stop_id] = f;
@@ -227,7 +228,9 @@ function digitBaseName(s) {
 }
 function normStopName(name) {
   // 先去数字分站、再套括号别名，让数字分站继承纯名的站归属（中山纪念堂4 → 中山纪念堂(市总工会)）
-  let s = stripSubMarkers(fixedName(name));
+  let s = fixedName(name);
+  s = STATION_MERGE_MAP[s] || s; // 站名写法差异合并表（分类1）
+  s = stripSubMarkers(s);
   let db = digitBaseName(s);
   if (db) { s = db; }
   s = resolveName(s);
