@@ -1554,6 +1554,25 @@
     return bestId;
   }
 
+  // 站点标记吸附到线路几何的最近点（300m 内，超出则保持原坐标）
+  function snapToLine(p, coords) {
+    if (!coords || !coords.length) { return p; }
+    var sx = Math.cos(p[1] * Math.PI / 180) || 1;
+    var px = p[0] * sx, py = p[1];
+    var bestD = Infinity, bestPt = null;
+    for (var i = 0; i < coords.length - 1; i++) {
+      var ax = coords[i][0] * sx, ay = coords[i][1];
+      var bx = coords[i + 1][0] * sx, by = coords[i + 1][1];
+      var dx = bx - ax, dy = by - ay, len2 = dx * dx + dy * dy;
+      var t = len2 ? ((px - ax) * dx + (py - ay) * dy) / len2 : 0;
+      t = Math.max(0, Math.min(1, t));
+      var cx = ax + t * dx, cy = ay + t * dy;
+      var d = Math.sqrt(((px - cx) / sx) * ((px - cx) / sx) + (py - cy) * (py - cy)) * 111320;
+      if (d < bestD) { bestD = d; bestPt = [cx / sx, cy]; }
+    }
+    return (bestPt && bestD <= 300) ? bestPt : p;
+  }
+
   // 站点标记位置：优先站内距线路最近的平台；若最近平台仍 >100m，
   // 且该站有派生方向站台（远侧汇聚点），则用派生点（数据缺失方向的显示兜底）
   function bestStopPos(geomCoords, name, fallbackId, dirKey) {
@@ -1564,7 +1583,7 @@
     if (own && geomCoords) {
       var ownD2 = pointToLineDist2(geomCoords, own.geometry.coordinates);
       if (Math.sqrt(ownD2) * 111320 <= 100) {
-        return { coords: own.geometry.coordinates, derived: false };
+        return { coords: snapToLine(own.geometry.coordinates, geomCoords), derived: false };
       }
     }
     var ids = stationStopIds(fallbackId, name);
@@ -1585,7 +1604,7 @@
           if (normStopName(fx[0]) !== n) { continue; }
           var d2c = pointToLineDist2(geomCoords, [fx[1], fx[2]]);
           if (Math.sqrt(d2c) * 111320 <= 150) {
-            return { coords: [fx[1], fx[2]], derived: true, source: 'chelaile' };
+            return { coords: snapToLine([fx[1], fx[2]], geomCoords), derived: true, source: 'chelaile' };
           }
         }
       }
@@ -1596,9 +1615,9 @@
         var d2 = pointToLineDist2(geomCoords, [p.lng, p.lat]);
         if (d2 < bestDpD2) { bestDpD2 = d2; bestDp = p; }
       });
-      if (bestDp && Math.sqrt(bestDpD2) * 111320 <= 150) { return { coords: [bestDp.lng, bestDp.lat], derived: true }; }
+      if (bestDp && Math.sqrt(bestDpD2) * 111320 <= 150) { return { coords: snapToLine([bestDp.lng, bestDp.lat], geomCoords), derived: true }; }
     }
-    return pos ? { coords: pos, derived: false } : null;
+    return pos ? { coords: snapToLine(pos, geomCoords), derived: false } : null;
   }
 
   function addOverlayStops(dirs, colorA, colorB, dupIds) {
