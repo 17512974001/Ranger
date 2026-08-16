@@ -22,7 +22,16 @@ function csvVal(v) {
   return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 }
 function writeCsv(file, header, rows) {
-  fs.writeFileSync(file, '\uFEFF' + [header.join(','), ...rows.map((r) => r.map(csvVal).join(','))].join('\r\n') + '\r\n', 'utf-8');
+  const content = '\uFEFF' + [header.join(','), ...rows.map((r) => r.map(csvVal).join(','))].join('\r\n') + '\r\n';
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    try {
+      fs.writeFileSync(file, content, 'utf-8');
+      return;
+    } catch (e) {
+      if (attempt === 5) throw e;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 400);
+    }
+  }
 }
 
 // ---------- 1) 对照表 ----------
@@ -72,7 +81,7 @@ writeCsv(`${OUT_DIR}/车来了同名站组字典.csv`,
   ['namesakeStId', '组内车来了站名', '涉及合并站', 'BV站数', '站名变体数', '合并站数'],
   nameRows);
 
-// ---------- 3) 同一物理站台被拆到不同合并站（应合并） ----------
+// ---------- 3) 同一物理站台被拆到不同合并站（应合并；总站与非总站混合除外） ----------
 const phyGroups = new Map(); // physicalStId -> {merged:Set, bvs:Set, chNames:Set}
 for (const r of mapRows) {
   if (!r[4]) continue;
@@ -82,13 +91,28 @@ for (const r of mapRows) {
   g.chNames.add(r[3]);
   phyGroups.set(r[4], g);
 }
-const mergeRows = [...phyGroups.entries()]
-  .filter(([, g]) => g.merged.size >= 2)
-  .map(([id, g]) => [id, [...g.merged].join(' / '), [...g.bvs].join(' / '), [...g.chNames].join(' / '), g.bvs.size])
-  .sort((a, b) => b[4] - a[4]);
+function hasTerminal(names) { return [...names].some((n) => n.indexOf('总站') >= 0 || /总$/.test(n)); }
+function hasNonTerminal(names) { return [...names].some((n) => n.indexOf('总站') < 0); }
+const mergeRows = [];
+const terminalRows = [];
+for (const [id, g] of phyGroups) {
+  if (g.merged.size < 2) continue;
+  const names = [...g.merged];
+  const row = [id, names.join(' / '), [...g.bvs].join(' / '), [...g.chNames].join(' / '), g.bvs.size];
+  if (hasTerminal(names) && hasNonTerminal(names)) {
+    terminalRows.push([...row, '总站与非总站混合，不自动合并']);
+  } else {
+    mergeRows.push(row);
+  }
+}
+mergeRows.sort((a, b) => b[4] - a[4]);
+terminalRows.sort((a, b) => b[4] - a[4]);
 writeCsv(`${OUT_DIR}/分站合并核对_应合并.csv`,
   ['physicalStId', '涉及合并站', 'BV站点ID', '车来了站名', 'BV站数'],
   mergeRows);
+writeCsv(`${OUT_DIR}/分站合并核对_总站异站.csv`,
+  ['physicalStId', '涉及合并站', 'BV站点ID', '车来了站名', 'BV站数', '说明'],
+  terminalRows);
 
 // ---------- 4) 同一合并站跨多个同名站组（待甄别） ----------
 const stationGroups = new Map(); // 合并站名 -> {nameGroups:Map, bvs:Set, lngs:Set, lats:Set}
@@ -130,7 +154,8 @@ writeCsv(`${OUT_DIR}/分站合并核对_待甄别.csv`,
 // ---------- 汇总 ----------
 console.log(`对照表行数：${mapRows.length}`);
 console.log(`同名站组数：${nameRows.length}；物理站台数：${phyGroups.size}`);
-console.log(`应合并（同物理站台跨合并站）：${mergeRows.length} 组`);
+console.log(`应合并（同物理站台跨合并站，剔除总站混合）：${mergeRows.length} 组`);
+console.log(`总站与非总站混合（不自动合并，人工判断）：${terminalRows.length} 组`);
 console.log(`待甄别（同合并站跨同名站组）：${reviewRows.length} 组（需核对 ${reviewRows.filter((r) => r[3] === '需核对').length}）`);
 console.log('\n== 应合并 Top10 ==');
 mergeRows.slice(0, 10).forEach((r) => console.log('  ', r[0].slice(0, 8), '|', r[1]));
