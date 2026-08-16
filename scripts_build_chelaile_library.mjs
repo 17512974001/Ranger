@@ -34,6 +34,20 @@ function normName(n) {
     .replace(/\s+/g, '')
     .trim();
 }
+// 保留括号内容的匹配键：仅统一括号宽度、去前缀/方向后缀/尾缀
+function normKey(n) {
+  return String(n || '')
+    .replace(/公共汽车/g, '')
+    .replace(/BRT/g, '')
+    .replace(/[（]/g, '(')
+    .replace(/[）]/g, ')')
+    .replace(/[①②③④⑤⑥⑦⑧⑨⑩]/g, '')
+    .replace(/\d+$/g, '')
+    .replace(/(停东行|停西行|停南行|停北行|东行|西行|南行|北行)$/g, '')
+    .replace(/(总站|首末站|站|分站)$/g, '')
+    .replace(/\s+/g, '')
+    .trim();
+}
 
 function seqOverlap(a, b) {
   const setB = new Set(b.map(normName));
@@ -91,17 +105,34 @@ for (const cn of Object.keys(BUS_ROUTE_STOPS)) {
   stats.matchedDirs++;
   const chStops = best.stations;
   const stops = BUS_ROUTE_STOPS[cn].map(([order, localName, localId], i) => {
+    const nk = normKey(localName);
     const n = normName(localName);
     let hit = null, bestD = Infinity;
+    // 优先：括号内容一致的精确键匹配
     for (const cs of chStops) {
-      if (normName(cs.sn) !== n) continue;
+      if (normKey(cs.sn) !== nk) continue;
       const dd = Math.abs(cs.order - order);
       if (dd < bestD) { bestD = dd; hit = cs; }
     }
+    // 次优：去括号基名匹配（退而求其次）
+    if (!hit) {
+      for (const cs of chStops) {
+        if (normName(cs.sn) !== n) continue;
+        const dd = Math.abs(cs.order - order);
+        if (dd < bestD) { bestD = dd; hit = cs; }
+      }
+    }
+    const localCoord = stopById.get(localId);
+    const matchDist = hit && localCoord
+      ? Math.round(Math.sqrt(
+        (((hit.wgsLng - localCoord[0]) * 111320 * Math.cos((hit.wgsLat * Math.PI) / 180)) ** 2) +
+        ((hit.wgsLat - localCoord[1]) * 111320) ** 2
+      ))
+      : null;
     if (hit) stats.matchedStops++;
     return hit
-      ? [order, localName, localId, hit.sn, hit.wgsLng, hit.wgsLat, hit.sId, hit.physicalStId]
-      : [order, localName, localId, null, null, null, null, null];
+      ? [order, localName, localId, hit.sn, hit.wgsLng, hit.wgsLat, hit.sId, hit.physicalStId, hit.namesakeStId, matchDist]
+      : [order, localName, localId, null, null, null, null, null, null, null];
   });
   library[cn] = {
     dir: best.line?.direction,
