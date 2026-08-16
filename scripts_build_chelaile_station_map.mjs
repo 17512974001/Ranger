@@ -14,7 +14,7 @@ const dict = {};
 for (const l of fs.readFileSync(`${OUT_DIR}/分站规范化字典.csv`, 'utf-8')
   .replace(/^\uFEFF/, '').trim().split(/\r?\n/).slice(1)) {
   const c = l.split(',');
-  if (c.length >= 3) dict[c[2]] = { merged: c[0], raw: c[1] };
+  if (c.length >= 4) dict[c[3]] = { merged: c[1], raw: c[2] };
 }
 
 function csvVal(v) {

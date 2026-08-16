@@ -400,6 +400,23 @@ if (mergedIds.indexOf('BV11688540') < 0 || mergedIds.indexOf('BV09302573') < 0) 
 }
 console.log('digit sub-station merge OK (员村四横路口 + 员村四横路口2 -> ' + mergedIds.length + ' IDs)');
 
+// ---- 同名站距离聚类：跨区同名站必须拆开（南村 天河/番禺/南沙/花都） ----
+const nanTianhe = ['BV09316713', 'BV11688567']; // 天河 南村1 / 南村
+const nanAll = ['BV09316713', 'BV11688567', 'BV09398775', 'BV09277458', 'BV11688568'];
+const nanUnion = function (ids) {
+  const s = new Set();
+  ids.forEach(function (id) { (sandbox.STOP_ROUTES[id] || []).forEach(function (r) { s.add(r); }); });
+  return s;
+};
+const nanCntLocal = nanUnion(nanTianhe).size;
+const nanCntFar = nanUnion(nanAll).size;
+sandbox.__APP_DEBUG__.selectBusStop('BV11688567', '南村');
+const mNan = els['#info'].innerHTML.match(/经过线路（(\d+)）/);
+if (!mNan || Number(mNan[1]) !== nanCntLocal || (nanCntFar > nanCntLocal && Number(mNan[1]) === nanCntFar)) {
+  throw new Error('南村 same-name far merge not split: local=' + nanCntLocal + ' far=' + nanCntFar + ' shown=' + (mNan ? mNan[1] : '?'));
+}
+console.log('同名站距离聚类 OK (南村 天河/番禺/南沙/花都 已拆开)');
+
 // ---- colinearity dedupe for same-direction sub-stations (46路) ----
 const r46Key = Object.keys(sandbox.BUS_ROUTE_STOPS).find(function (k) {
   return k.startsWith('46路(') &&

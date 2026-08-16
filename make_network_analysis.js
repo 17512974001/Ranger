@@ -247,13 +247,60 @@ function displayStopName(name) {
   return s;
 }
 
+// ---------- 距离感知的同名站聚类（与 app.js 口径一致：基名 + ≤1000m） ----------
+const CLUSTER_DIST = 1000;
+const stopClusterId = {};
+const clusterKeyToIds = {};
+const baseClusters = {};
+(function buildStopClusters() {
+  const groups = {};
+  Object.keys(BUS_ROUTE_STOPS).forEach(function (k) {
+    (BUS_ROUTE_STOPS[k] || []).forEach(function (st) {
+      if (isGenericStop(st[1])) { return; }
+      const f = busStopById[st[2]];
+      if (!f) { return; }
+      const n = normStopName(st[1]);
+      (groups[n] = groups[n] || {})[st[2]] = f.geometry.coordinates;
+    });
+  });
+  Object.keys(groups).forEach(function (base) {
+    const ids = Object.keys(groups[base]);
+    const coords = ids.map(function (id) { return groups[base][id]; });
+    if (ids.length === 1) {
+      clusterKeyToIds[base] = ids;
+      (baseClusters[base] = baseClusters[base] || []).push(base);
+      stopClusterId[ids[0]] = base;
+      return;
+    }
+    const parent = ids.map(function (_, i) { return i; });
+    function find(x) { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; }
+    function union(a, b) { const ra = find(a), rb = find(b); if (ra !== rb) { parent[rb] = ra; } }
+    for (let i = 0; i < ids.length; i++) {
+      for (let j = i + 1; j < ids.length; j++) {
+        if (segLenM(coords[i], coords[j]) <= CLUSTER_DIST) { union(i, j); }
+      }
+    }
+    const comp = {};
+    ids.forEach(function (id, i) { const r = find(i); (comp[r] = comp[r] || []).push(id); });
+    const comps = Object.keys(comp).map(function (r) { return comp[r]; });
+    comps.forEach(function (memberIds, ci) {
+      const key = comps.length === 1 ? base : base + '#' + (ci + 1);
+      clusterKeyToIds[key] = memberIds;
+      (baseClusters[base] = baseClusters[base] || []).push(key);
+      memberIds.forEach(function (id) { stopClusterId[id] = key; });
+    });
+  });
+})();
+
 // ---------- 站点/平台基础数据 ----------
 const stationMeta = new Map(); // key -> {name, coords, routes:Set}
 const stationPlatforms = new Map(); // key -> [{name,id,lng,lat}]
 const routeStations = new Map(); // num -> Set(key)
 const routeSeqByDir = []; // {num, cn, seq:[keys]}
 
-function stKey(st) { return isGenericStop(st[1]) ? ('G:' + st[2]) : normStopName(st[1]); }
+function stKey(st) {
+  return isGenericStop(st[1]) ? ('G:' + st[2]) : (stopClusterId[st[2]] || normStopName(st[1]));
+}
 function ensureStation(key, st) {
   let m = stationMeta.get(key);
   if (!m) {
@@ -406,16 +453,16 @@ writeCsv('高重复走廊.csv',
   }));
 
 writeCsv('分站规范化字典.csv',
-  ['合并站名', '原始分站名', '站点ID', '经度', '纬度'],
+  ['合并站名', '站组ID', '原始分站名', '站点ID', '经度', '纬度'],
   (function () {
     const rows = [];
     stationPlatforms.forEach(function (pl, key) {
       const name = stationMeta.get(key).name;
       pl.forEach(function (p) {
-        rows.push([name, p.name, p.id, p.lng, p.lat]);
+        rows.push([name, key, p.name, p.id, p.lng, p.lat]);
       });
     });
-    rows.sort(function (a, b) { return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0; });
+    rows.sort(function (a, b) { return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : (a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : 0); });
     return rows;
   })());
 

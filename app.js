@@ -366,14 +366,68 @@
     });
     return out;
   }
-  var stopNameToIds = {};
-  Object.keys(BUS_ROUTE_STOPS).forEach(function (k) {
-    (BUS_ROUTE_STOPS[k] || []).forEach(function (st) {
-      if (isGenericStop(st[1])) { return; }
-      var n = normStopName(st[1]);
-      (stopNameToIds[n] = stopNameToIds[n] || []).push(st[2]);
+  // ---------- 距离感知的同名站聚类（同一规范基名 + 坐标 ≤1000m 才视为同一站） ----------
+  var CLUSTER_DIST = 1000;
+  var stopClusterId = {};
+  var clusterKeyToIds = {};
+  var baseClusters = {};
+  function buildStopClusters() {
+    var groups = {};
+    Object.keys(BUS_ROUTE_STOPS).forEach(function (k) {
+      (BUS_ROUTE_STOPS[k] || []).forEach(function (st) {
+        if (isGenericStop(st[1])) { return; }
+        var f = busStopById[st[2]];
+        if (!f) { return; }
+        var n = normStopName(st[1]);
+        (groups[n] = groups[n] || {})[st[2]] = f.geometry.coordinates;
+      });
     });
-  });
+    Object.keys(groups).forEach(function (base) {
+      var ids = Object.keys(groups[base]);
+      var coords = ids.map(function (id) { return groups[base][id]; });
+      if (ids.length === 1) {
+        clusterKeyToIds[base] = ids;
+        (baseClusters[base] = baseClusters[base] || []).push(base);
+        stopClusterId[ids[0]] = base;
+        return;
+      }
+      // 并查集：≤1000m 相连的站归为同一站
+      var parent = ids.map(function (_, i) { return i; });
+      function find(x) { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; }
+      function union(a, b) { var ra = find(a), rb = find(b); if (ra !== rb) { parent[rb] = ra; } }
+      for (var i = 0; i < ids.length; i++) {
+        for (var j = i + 1; j < ids.length; j++) {
+          if (segLenM(coords[i], coords[j]) <= CLUSTER_DIST) { union(i, j); }
+        }
+      }
+      var comp = {};
+      ids.forEach(function (id, i) { var r = find(i); (comp[r] = comp[r] || []).push(id); });
+      var comps = Object.keys(comp).map(function (r) { return comp[r]; });
+      comps.forEach(function (memberIds, ci) {
+        var key = comps.length === 1 ? base : base + '#' + (ci + 1);
+        clusterKeyToIds[key] = memberIds;
+        (baseClusters[base] = baseClusters[base] || []).push(key);
+        memberIds.forEach(function (id) { stopClusterId[id] = key; });
+      });
+    });
+  }
+  buildStopClusters();
+  // 给定停靠记录（站点ID + 站名），返回其所属"站"的全部平台ID
+  function stationStopIds(stopId, name) {
+    if (isGenericStop(name)) { return [stopId]; }
+    var k = stopClusterId[stopId];
+    return k ? (clusterKeyToIds[k] || [stopId]) : [stopId];
+  }
+  // 按规范名取全部同基名簇（调试/搜索用，展示聚合结果）
+  function stationStopIdsByBase(name) {
+    var out = [];
+    (baseClusters[normStopName(name)] || []).forEach(function (k) {
+      (clusterKeyToIds[k] || []).forEach(function (id) {
+        if (out.indexOf(id) < 0) { out.push(id); }
+      });
+    });
+    return out;
+  }
   // 派生方向站台（远侧线路几何汇聚点，用于数据缺失的方向停靠点显示）
   var derivedByNorm = {};
   (window.DERIVED_PLATFORMS || []).forEach(function (p) {
@@ -385,8 +439,7 @@
 
   function isBrtStop(stopId, name) {
     if (brtStationIds[stopId]) { return true; }
-    var n = normStopName(name);
-    return (stopNameToIds[n] || []).some(function (oid) { return brtStationIds[oid]; });
+    return stationStopIds(stopId, name).some(function (oid) { return brtStationIds[oid]; });
   }
 
   // ---------- 平台坐标附属数据（合并站 -> 分站明细，为将来分站级显示预留） ----------
@@ -1201,7 +1254,7 @@
     var routeSet = {};
     var routes = [];
     var dn = displayStopName(name);
-    (stopNameToIds[normStopName(name)] || [stopId]).forEach(function (id) {
+    stationStopIds(stopId, name).forEach(function (id) {
       (STOP_ROUTES[id] || []).forEach(function (r) {
         if (!routeSet[r]) { routeSet[r] = true; routes.push(r); }
       });
@@ -1314,12 +1367,7 @@
       var stopName = s[1];
       var stopId = s[2];
       var seen = {};
-      var ids = [stopId];
-      if (!isGenericStop(stopName)) {
-        (stopNameToIds[normStopName(stopName)] || []).forEach(function (id) {
-          if (ids.indexOf(id) < 0) { ids.push(id); }
-        });
-      }
+      var ids = stationStopIds(stopId, stopName);
       ids.forEach(function (id) {
         var keys = stopRouteKeys[id] || {};
         Object.keys(keys).forEach(function (key) {
@@ -1472,7 +1520,7 @@
 
   function bestPlatformId(geomCoords, name, fallbackId) {
     if (!geomCoords) { return fallbackId; }
-    var ids = stopNameToIds[normStopName(name)] || [fallbackId];
+    var ids = stationStopIds(fallbackId, name);
     var bestId = fallbackId;
     var bestD = Infinity;
     ids.forEach(function (id) {
@@ -1488,7 +1536,7 @@
   // 且该站有派生方向站台（远侧汇聚点），则用派生点（数据缺失方向的显示兜底）
   function bestStopPos(geomCoords, name, fallbackId, dirKey) {
     var pos = null, bestD2 = Infinity;
-    var ids = stopNameToIds[normStopName(name)] || [fallbackId];
+    var ids = stationStopIds(fallbackId, name);
     ids.forEach(function (id) {
       var ff = busStopById[id];
       if (!ff) { return; }
@@ -2179,7 +2227,7 @@
       stopCandidates: stopCandidates,
       fmtTime: fmtTime,
       normStop: function (n) { return normStopName(n); },
-      normIds: function (n) { return (stopNameToIds[normStopName(n)] || []).slice(); },
+      normIds: function (n) { return stationStopIdsByBase(n); },
       getPlatforms: function (n) { return stationPlatforms[displayStopName(n)] || []; },
       displayStops: displayStops,
       normDisplay: function (n) { return displayStopName(n); },
