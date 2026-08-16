@@ -1,13 +1,11 @@
-// 全网方向分台修正（按编号映射）：车来了分站编号 ①/②/③ → 本地同名 N 号分站
-// 用法：node scripts_apply_chelaile_platforms.mjs [--apply] [--limit N]
+// 全网方向分台修正（按车来了坐标）：每个方向停靠点 → 同一站族内距车来了坐标最近的平台
+// 用法：node scripts_apply_chelaile_platforms.mjs [--apply]
 import fs from 'node:fs';
 import vm from 'node:vm';
 
 const ROOT = 'D:/haowanyouxi/Canton/CPTOND-2025/Guangzhou';
 const OUT_DIR = `${ROOT}/output/network`;
 const APPLY = process.argv.includes('--apply');
-const limitArg = process.argv.indexOf('--limit');
-const LIMIT = limitArg >= 0 ? parseInt(process.argv[limitArg + 1], 10) : Infinity;
 
 function loadJsGlobal(file, globalName) {
   const s = { window: {} };
@@ -23,20 +21,6 @@ const LIB = JSON.parse(fs.readFileSync(`${OUT_DIR}/chelaile_direction_stops.json
 const stopById = new Map();
 for (const f of BUS_STOPS_OBJ.features) stopById.set(f.properties.stop_id, f);
 
-const CN_NUM = { '①': 1, '②': 2, '③': 3, '④': 4, '⑤': 5, '⑥': 6, '⑦': 7, '⑧': 8, '⑨': 9, '⑩': 10 };
-function normName(n) {
-  return String(n || '')
-    .replace(/公共汽车/g, '')
-    .replace(/BRT/g, '')
-    .replace(/[（(][^（）()]*[）)]/g, '')
-    .replace(/[①②③④⑤⑥⑦⑧⑨⑩]/g, '')
-    .replace(/\d+$/g, '')
-    .replace(/(停?[东南西北]行|上行|下行)$/g, '')
-    .replace(/(总站|首末站|站|分站)$/g, '')
-    .replace(/\s+/g, '')
-    .trim();
-}
-// 保留括号内容的匹配键（统一括号宽度，去掉 ①②③/数字/方向后缀/尾缀）
 function normKey(n) {
   return String(n || '')
     .replace(/公共汽车/g, '')
@@ -50,20 +34,12 @@ function normKey(n) {
     .replace(/\s+/g, '')
     .trim();
 }
-// 取站名末尾的分站编号（数字或①-⑩），无则 null
-function platformNum(name) {
-  const s = String(name || '').replace(/[（(][^（）()]*[）)]/g, '');
-  const m = s.match(/([①-⑩]|\d+)$/);
-  if (!m) return null;
-  const v = m[1];
-  return CN_NUM[v] != null ? CN_NUM[v] : parseInt(v, 10);
-}
 function distM(a, b) {
   const lat = ((a[1] + b[1]) / 2) * Math.PI / 180;
   return Math.sqrt(((b[0] - a[0]) * 111320 * Math.cos(lat)) ** 2 + ((b[1] - a[1]) * 111320) ** 2);
 }
 
-// 站族索引：normName -> [{id, name, num, coord}]
+// 站族索引：normKey -> [{id, name, coord}]
 const familyIndex = {};
 for (const f of BUS_STOPS_OBJ.features) {
   const n = normKey(f.properties.name_cn);
@@ -71,67 +47,58 @@ for (const f of BUS_STOPS_OBJ.features) {
   (familyIndex[n] = familyIndex[n] || []).push({
     id: f.properties.stop_id,
     name: f.properties.name_cn,
-    num: platformNum(f.properties.name_cn),
     coord: f.geometry.coordinates,
   });
 }
 
+const MIN_IMPROVE = 50;   // 距离改善至少 50m 才换
+const MAX_NEW_DIST = 300; // 目标平台距车来了坐标不超过 300m（过滤匹配异常）
+
 const changes = [];
-let checked = 0;
 for (const cn of Object.keys(LIB)) {
-  if (checked >= LIMIT) break;
   const stops = LIB[cn].stops || [];
   for (const s of stops) {
     // s: [order, localName, localId, chName, lng, lat, sId, physicalStId, namesakeStId, matchDist]
-    if (!s[3]) continue;
-    const chNum = platformNum(s[3]);
-    if (chNum == null) continue; // 车来了无编号，不动
+    if (!s[3] || s[4] == null) continue;
     const localName = s[1], localId = s[2];
     const nLocal = normKey(localName);
     const nCh = normKey(s[3]);
-    if (!nLocal || nLocal !== nCh) continue; // 同名同族
+    if (!nLocal || nLocal !== nCh) continue; // 仅同名同族（保留括号内容，避免跨站误换）
     if (/^临时站|^招呼站/.test(localName)) continue;
     const cur = stopById.get(localId);
     if (!cur) continue;
-    const cands = (familyIndex[nLocal] || []).filter((c) => c.num === chNum);
-    if (!cands.length) continue;
     const chCoord = [s[4], s[5]];
+    const curDist = distM(cur.geometry.coordinates, chCoord);
+    const cands = familyIndex[nLocal] || [];
     let best = null, bestD = Infinity;
     for (const c of cands) {
       const d = distM(c.coord, chCoord);
       if (d < bestD) { bestD = d; best = c; }
     }
     if (!best || best.id === localId) continue;
-    checked++;
-    const curDist = distM(cur.geometry.coordinates, chCoord);
-    changes.push({
-      cn, order: s[0], localName, localId, curDist: Math.round(curDist),
-      targetName: best.name, targetId: best.id, bestD: Math.round(bestD),
-      chName: s[3], outlier: bestD > 300,
-    });
+    const improve = curDist - bestD;
+    if (improve >= MIN_IMPROVE && bestD <= MAX_NEW_DIST) {
+      changes.push({
+        cn, order: s[0], localName, localId, curDist: Math.round(curDist),
+        targetName: best.name, targetId: best.id, bestD: Math.round(bestD),
+        chName: s[3], improve: Math.round(improve),
+      });
+    }
   }
 }
 
-console.log(`按编号映射：${changes.length} 处方向停靠需要换分站`);
-console.log(`其中目标平台距车来了坐标>300m（异常待查）：${changes.filter((c) => c.outlier).length} 处`);
+console.log(`按车来了坐标：${changes.length} 处方向停靠需要换平台`);
 const byStation = {};
 for (const c of changes) {
-  const key = normName(c.localName);
+  const key = normKey(c.localName);
   (byStation[key] = byStation[key] || []).push(c);
 }
-const top = Object.entries(byStation).sort((a, b) => b[1].length - a[1].length).slice(0, 15);
 console.log('涉及最多站点（前15）：');
-top.forEach(([k, v]) => console.log(`  ${k}: ${v.length} 处`));
-console.log('样例（前15）：');
-changes.slice(0, 15).forEach((c) => {
-  console.log(`  ${c.cn} | ${c.localName}[${c.localId}] -> ${c.targetName}[${c.targetId}]（车来了${c.chName}${c.outlier ? ' ⚠远' : ''}）`);
+Object.entries(byStation).sort((a, b) => b[1].length - a[1].length).slice(0, 15).forEach(([k, v]) => console.log(`  ${k}: ${v.length} 处`));
+console.log('国防大厦相关：');
+changes.filter((c) => /国防大厦/.test(c.localName)).forEach((c) => {
+  console.log(`  ${c.cn} | ${c.localName}[${c.localId}] 距车来了${c.curDist}m -> ${c.targetName}[${c.targetId}] ${c.bestD}m`);
 });
-if (changes.some((c) => c.outlier)) {
-  console.log('\n异常（>300m）样例：');
-  changes.filter((c) => c.outlier).slice(0, 10).forEach((c) => {
-    console.log(`  ${c.cn} | ${c.localName} -> ${c.targetName} | 车来了${c.chName} 距${c.bestD}m`);
-  });
-}
 
 if (!APPLY) {
   console.log('\n（预演模式：未修改数据。加 --apply 执行修正）');
@@ -171,19 +138,25 @@ const stopRoutesOut = {};
 for (const k of Object.keys(stopRoutesNew)) stopRoutesOut[k] = [...stopRoutesNew[k]].sort();
 
 function writeJs(file, name, obj) {
-  fs.writeFileSync(file, `window.${name} = ` + JSON.stringify(obj) + ';\n', 'utf-8');
+  const content = `window.${name} = ` + JSON.stringify(obj) + ';\n';
+  for (let attempt = 1; attempt <= 6; attempt++) {
+    try { fs.writeFileSync(file, content, 'utf-8'); return; }
+    catch (e) { if (attempt === 6) throw e; Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500); }
+  }
 }
 for (const sub of ['', 'transit_site/']) {
   writeJs(`${ROOT}/${sub}data/bus_route_stops.js`, 'BUS_ROUTE_STOPS', routeStopsNew);
   writeJs(`${ROOT}/${sub}data/stop_routes.js`, 'STOP_ROUTES', stopRoutesOut);
 }
 
-// 报告
-const report = [['方向记录', '序号', '站名', '原分站ID', '新分站', '新分站ID', '车来了分站', '目标距(m)', '异常']];
-changes.forEach((c) => report.push([c.cn, c.order, c.localName, c.localId, c.targetName, c.targetId, c.chName, c.bestD, c.outlier ? '是' : '']));
-fs.writeFileSync(`${OUT_DIR}/方向分台修正_车来了.csv`, '\uFEFF' + report.map((r) => r.map((v) => (/,/.test(String(v)) ? `"${v}"` : v)).join(',')).join('\r\n') + '\r\n', 'utf-8');
+const report = [['方向记录', '序号', '站名', '原分站ID', '原距(m)', '新分站', '新分站ID', '新距(m)', '改善(m)', '车来了分站']];
+changes.forEach((c) => report.push([c.cn, c.order, c.localName, c.localId, c.curDist, c.targetName, c.targetId, c.bestD, c.improve, c.chName]));
+const csvContent = '\uFEFF' + report.map((r) => r.map((v) => (/,/.test(String(v)) ? `"${v}"` : v)).join(',')).join('\r\n') + '\r\n';
+for (let attempt = 1; attempt <= 6; attempt++) {
+  try { fs.writeFileSync(`${OUT_DIR}/方向分台修正_车来了.csv`, csvContent, 'utf-8'); break; }
+  catch (e) { if (attempt === 6) throw e; Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500); }
+}
 
-// 校验
 const check = loadJsGlobal(`${ROOT}/data/bus_route_stops.js`, 'BUS_ROUTE_STOPS');
 const ids = new Set(stopById.keys());
 let bad = 0;
