@@ -1728,12 +1728,19 @@
   // ---------- stop section (平铺 / 电显 + BRT/地铁标记) ----------
   function metroLineColor(line) {
     if (METRO_COLORS[line]) { return METRO_COLORS[line]; }
-    var base = line.replace(/(内环|外环|一期|二期|三期|支线|快线)$/, '');
-    return METRO_COLORS[base] || '#64748b';
+    var m = String(line).match(/^地铁\d+号线/);
+    if (m && METRO_COLORS[m[0]]) { return METRO_COLORS[m[0]]; }
+    return '#64748b';
   }
 
   function metroLineText(line) {
-    return line.replace(/^地铁/, '').replace(/号线/g, '');
+    var m = String(line).match(/^地铁(\d+)号线/);
+    if (m) { return m[1]; }
+    if (line === 'APM线') { return 'APM'; }
+    if (line === '广佛线') { return '广佛'; }
+    if (line === '海珠有轨电车1号线') { return '海珠有轨1'; }
+    if (line === '黄埔有轨电车1号线') { return '黄埔有轨1'; }
+    return String(line).replace(/^地铁/, '').replace(/号线/g, '');
   }
 
   function metroLineBadges(stopId) {
@@ -1743,11 +1750,12 @@
     var out = [];
     arr.forEach(function (m) {
       (m.lines || []).forEach(function (line) {
-        if (seen[line]) { return; }
-        seen[line] = true;
+        var txt = metroLineText(line);
+        if (seen[txt]) { return; }
+        seen[txt] = true;
         var color = metroLineColor(line);
         out.push('<span class="stop-badge metro" style="background:' + color + '">' +
-          esc(metroLineText(line)) + '</span>');
+          esc(txt) + '</span>');
       });
     });
     return out.join('');
@@ -1767,11 +1775,12 @@
     if (arr) {
       arr.forEach(function (m) {
         (m.lines || []).forEach(function (line) {
-          if (seen[line]) { return; }
-          seen[line] = true;
+          var txt = metroLineText(line);
+          if (seen[txt]) { return; }
+          seen[txt] = true;
           var color = metroLineColor(line);
           items.push('<span class="stop-badge metro" style="background:' + color + '">' +
-            esc(metroLineText(line)) + '</span>');
+            esc(txt) + '</span>');
         });
       });
     }
