@@ -1558,6 +1558,15 @@
   // 且该站有派生方向站台（远侧汇聚点），则用派生点（数据缺失方向的显示兜底）
   function bestStopPos(geomCoords, name, fallbackId, dirKey) {
     var pos = null, bestD2 = Infinity;
+    // 优先用记录自身的平台（方向分台修正后记录即正确平台；仅当自身平台
+    // 距几何>100m（数据偏差）时才在站族内就近吸附/用修正层）
+    var own = busStopById[fallbackId];
+    if (own && geomCoords) {
+      var ownD2 = pointToLineDist2(geomCoords, own.geometry.coordinates);
+      if (Math.sqrt(ownD2) * 111320 <= 100) {
+        return { coords: own.geometry.coordinates, derived: false };
+      }
+    }
     var ids = stationStopIds(fallbackId, name);
     ids.forEach(function (id) {
       var ff = busStopById[id];
