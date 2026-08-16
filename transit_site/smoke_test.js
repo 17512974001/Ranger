@@ -224,6 +224,13 @@ console.log('search single-digit ranking OK');
 });
 console.log('110/113 补线搜索 OK');
 
+// ---- 疑似停运/调整线路在搜索中灰显标注 ----
+const doubtCand = sandbox.__APP_DEBUG__.routeCandidates('363');
+if (!doubtCand.some(function (o) { return /疑似/.test(o.st || ''); })) {
+  throw new Error('363 should be marked as 疑似 in route search');
+}
+console.log('疑似停运线路搜索灰显 OK (363 → 疑似停运)');
+
 // ---- pinyin search ----
 const ycdHit = sandbox.__APP_DEBUG__.stopCandidates('ycd');
 if (!ycdHit.some(function (o) { return o.name.indexOf('员村东') >= 0; })) {

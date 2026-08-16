@@ -52,6 +52,9 @@ body.panel-collapsed #panel-toggle { right: 12px; }
 .suggest.show { display: block; }
 .suggest li { padding: 8px 10px; font-size: 13px; cursor: pointer; border-bottom: 1px solid #f1f5f9; }
 .suggest li:hover { background: #eff6ff; }
+.suggest li.muted { color: #9aa3ad; }
+.suggest li.muted .tag { color: #b6bdc7; }
+.suggest .st-badge { font-size: 10px; color: #b45309; background: #fef3c7; border-radius: 4px; padding: 0 4px; margin-left: 6px; font-weight: 600; font-style: normal; }
 .suggest .tag { float: right; color: #94a3b8; font-size: 11px; }
 
 .btn { border: 0; border-radius: 8px; padding: 8px 14px; font-size: 13px; cursor: pointer; }

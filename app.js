@@ -2057,6 +2057,15 @@
   var stopInput = $('#stop-search');
   var stopSuggest = $('#stop-suggest');
 
+  // 疑似停运/调整线路（搜索时灰显）
+  var routeDoubtByKey = {};
+  busFeatures.forEach(function (f) {
+    var p = f.properties;
+    var key = routeKeyOf(p.route_cn);
+    var lbl = p.status_label || '';
+    if (!routeDoubtByKey[key] && /疑似|停运/.test(lbl)) { routeDoubtByKey[key] = lbl; }
+  });
+
   function routeCandidates(q) {
     q = q.trim().toLowerCase();
     if (q.length < 1) { return []; }
@@ -2070,7 +2079,7 @@
     Object.keys(busNumToKeys).forEach(function (n) {
       if (n.toLowerCase().indexOf(q) >= 0) {
         busNumToKeys[n].forEach(function (key) {
-          out.push({ label: keyLabel(key), net: 'bus', num: n, key: key, sc: score(n) });
+          out.push({ label: keyLabel(key), net: 'bus', num: n, key: key, sc: score(n), st: routeDoubtByKey[key] || '' });
         });
       }
     });
@@ -2101,7 +2110,7 @@
     out.forEach(push);
     busFeatures.forEach(function (f) {
       if (f.properties.route_cn.toLowerCase().indexOf(q) >= 0) {
-        push({ label: f.properties.route_cn, net: 'bus', num: routeNumOf(f.properties.route_cn), key: routeKeyOf(f.properties.route_cn) });
+        push({ label: f.properties.route_cn, net: 'bus', num: routeNumOf(f.properties.route_cn), key: routeKeyOf(f.properties.route_cn), st: routeDoubtByKey[routeKeyOf(f.properties.route_cn)] || '' });
       }
     });
     if (result.length < 12) {
@@ -2199,7 +2208,9 @@
     if (!items.length) { ul.classList.remove('show'); return; }
     items.forEach(function (o) {
       var li = document.createElement('li');
-      li.innerHTML = '<span>' + esc(label(o)) + '</span><span class="tag">' + esc(tag(o)) + '</span>';
+      var stBadge = o.st ? ' <em class="st-badge">' + esc(o.st.replace(/（待核对）/, '')) + '</em>' : '';
+      li.innerHTML = '<span>' + esc(label(o)) + stBadge + '</span><span class="tag">' + esc(tag(o)) + '</span>';
+      if (o.st) { li.classList.add('muted'); }
       li.addEventListener('click', function () { onClick(o); });
       ul.appendChild(li);
     });
