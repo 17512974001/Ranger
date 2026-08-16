@@ -30,6 +30,8 @@ function addStation(id, name, lng, lat) {
 addStation('CL100015', '广钢新城(崇文二路)总站', 113.240456, 23.075206);
 addStation('CL100016', '花城广场西总站', 113.315896, 23.122836);
 addStation('CL100017', '西坑①', 113.299166, 23.157116);
+addStation('CL100018', '棠安路总站①', 113.252176, 23.190316);
+addStation('CL100019', '棠安路总站②', 113.252266, 23.189616);
 
 // ---------- 停靠表修正 ----------
 const routeStopsNew = JSON.parse(JSON.stringify(BUS_ROUTE_STOPS));
@@ -66,6 +68,18 @@ setStop('114路(罗冲围总站(松南路)--南田路)', 0, '罗冲围总站(松
 // 110：反向第18站 西坑(益民服装城) 重复 → 应为独立的 西坑①
 setStop('110路(文化公园总站--天平架总站)', 17, '西坑①', 'CL100017');
 
+// 105：终点 → 棠安路总站②
+renameKey('105路(黄沙总站--棠安路站)', '105路(黄沙总站--棠安路总站②)');
+renameKey('105路(棠安路站--黄沙总站)', '105路(棠安路总站②--黄沙总站)');
+setStop('105路(黄沙总站--棠安路总站②)', -1, '棠安路总站②', 'CL100019');
+setStop('105路(棠安路总站②--黄沙总站)', 0, '棠安路总站②', 'CL100019');
+
+// 113：终点 → 棠安路总站①
+renameKey('113路(南田路--棠安路站)', '113路(南田路--棠安路总站①)');
+renameKey('113路(棠安路站--南田路)', '113路(棠安路总站①--南田路)');
+setStop('113路(南田路--棠安路总站①)', -1, '棠安路总站①', 'CL100018');
+setStop('113路(棠安路总站①--南田路)', 0, '棠安路总站①', 'CL100018');
+
 // ---------- 线路几何/元数据 ----------
 const routesNew = JSON.parse(JSON.stringify(BUS_ROUTES));
 for (const f of routesNew.features) {
@@ -76,6 +90,10 @@ for (const f of routesNew.features) {
   else if (oldCn === '107路(华成路口--中山八路总站)') newCn = '107路(花城广场西总站--中山八路总站)';
   else if (oldCn === '107路(中山八路总站--华成路口)') newCn = '107路(中山八路总站--花城广场西总站)';
   else if (oldCn === '114路(罗冲围(松南)总站--南田路)') newCn = '114路(罗冲围总站(松南路)--南田路)';
+  else if (oldCn === '105路(黄沙总站--棠安路站)') newCn = '105路(黄沙总站--棠安路总站②)';
+  else if (oldCn === '105路(棠安路站--黄沙总站)') newCn = '105路(棠安路总站②--黄沙总站)';
+  else if (oldCn === '113路(南田路--棠安路站)') newCn = '113路(南田路--棠安路总站①)';
+  else if (oldCn === '113路(棠安路站--南田路)') newCn = '113路(棠安路总站①--南田路)';
   if (newCn) {
     f.properties.route_cn = newCn;
     const t = newCn.slice(newCn.indexOf('(') + 1, newCn.lastIndexOf(')')).split('--');
