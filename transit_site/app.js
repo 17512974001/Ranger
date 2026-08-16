@@ -1678,11 +1678,15 @@
       }
       Object.keys(stopDirs).forEach(function (dn) {
         var info = stopDirs[dn];
-        // 用该站所属方向的几何与停靠记录定位（双向都停优先 A 方向），避免与标记错位
-        var idx = info.dirs.indexOf('A') >= 0 ? 0 : (info.dirs.indexOf('B') >= 0 && dirs[1] ? 1 : 0);
-        var d = dirs[idx];
+        // 用该站所属方向的几何与停靠记录定位（按方向标签选，双向都停优先 A；dirs 顺序与标签无关）
+        var want = info.dirs.indexOf('A') >= 0 ? 'A' : (info.dirs.indexOf('B') >= 0 ? 'B' : dirs[0].dir);
+        var d = null;
+        for (var di = 0; di < dirs.length; di++) {
+          if (dirs[di].dir === want) { d = dirs[di]; break; }
+        }
         if (!d) { return; }
-        var st = (info.stops && info.stops[d.dir]) || (info.stops && info.stops[dirs[0].dir]) || null;
+        var st = (info.stops && info.stops[d.dir]) || null;
+        if (!st) { st = (info.stops && info.stops[dirs[0].dir]) || null; }
         if (!st) { return; }
         var g = geomOf(d.cn);
         if (!g) { return; }

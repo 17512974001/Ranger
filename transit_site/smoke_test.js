@@ -801,6 +801,30 @@ lblChk.handlers.change();
 if (sandbox.__APP_DEBUG__.getLabels().total !== 0) { throw new Error('labels should clear when toggled off'); }
 console.log('stop name labels OK (' + lblInfo.total + ' labels, ' + lblInfo.black + ' black)');
 
+// ---- 106路 站名标签与标记对齐（南方大厦/大德路/文化公园） ----
+const cns106 = Object.keys(sandbox.BUS_ROUTE_STOPS).filter(function (k) { return k.indexOf('106路(') === 0; }).sort();
+const dirs106 = cns106.map(function (cn, i) { return { dir: i % 2 ? 'B' : 'A', cn: cn, stops: sandbox.BUS_ROUTE_STOPS[cn] }; });
+const stopDirs106 = {};
+dirs106.forEach(function (d) {
+  d.stops.forEach(function (st) {
+    const dn = sandbox.__APP_DEBUG__.normDisplay(st[1]);
+    const rec = stopDirs106[dn] || (stopDirs106[dn] = { dirs: [], stops: {} });
+    if (rec.dirs.indexOf(d.dir) < 0) { rec.dirs.push(d.dir); }
+    rec.stops[d.dir] = st;
+  });
+});
+['南方大厦', '大德路', '文化公园'].forEach(function (dn) {
+  const info = stopDirs106[dn];
+  if (!info) { throw new Error('106 label missing from stopDirs: ' + dn); }
+  const want = info.dirs.indexOf('A') >= 0 ? 'A' : 'B';
+  const d = dirs106.filter(function (x) { return x.dir === want; })[0];
+  const st = info.stops[d.dir] || info.stops[dirs106[0].dir];
+  const feat = sandbox.BUS_ROUTES.features.find(function (f) { return f.properties.route_cn === d.cn; });
+  const pos = sandbox.__APP_DEBUG__.bestPos(feat.geometry.coordinates, st[1], st[2], d.cn);
+  if (!pos) { throw new Error('106 label should have position: ' + dn); }
+});
+console.log('106路 站名标签对齐 OK（南方大厦/大德路/文化公园）');
+
 // ---- data sanity ----
 const r527 = Object.keys(sandbox.BUS_ROUTE_STOPS).find(k => k.startsWith('527路(广州白云站'));
 if (!r527 || sandbox.BUS_ROUTE_STOPS[r527].length < 30) { throw new Error('527 route stops missing'); }
