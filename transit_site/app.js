@@ -1919,7 +1919,8 @@
         ? '<dt>状态</dt><dd>' + esc(p.op_status) + '</dd>' +
           '<dt>类型</dt><dd>' + esc(p.route_type || '—') + '</dd>'
         : '<dt>类型</dt><dd>' + esc(p.route_type || '—') + '</dd>' +
-          '<dt>状态</dt><dd>' + esc(p.status_label || '—') + '</dd>') +
+          '<dt>状态</dt><dd>' + esc(p.status_label || '—') +
+          (p.status_note ? ' <span class="warn">' + esc(p.status_note) + '</span>' : '') + '</dd>') +
       '<dt>首末站</dt><dd>' + esc(p.s_stop_cn || '—') + ' ⇄ ' + esc(p.e_stop_cn || '—') + '</dd>' +
       '<dt>里程</dt><dd>' + fmt(p.distance_km) + ' km</dd>' +
       '<dt>站点</dt><dd>' + fmt(p.total_stop) + ' 站</dd>' +
