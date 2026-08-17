@@ -299,10 +299,65 @@ git config --global --add safe.directory D:/haowanyouxi/Canton/CPTOND-2025/Guang
 2. **提交说明写清楚**：一个月后你会靠它回忆当时改了什么；
 3. **谨慎使用 `reset --hard` 和 `checkout --`**：会丢改动，拿不准就先问；
 4. **重要文件先备份再折腾**：不确定的操作，先把文件夹复制一份到别处；
-5. **目前仓库只在本地**：没有推到任何远程（如 GitHub）。想异地备份或多人协作，需要创建远程仓库并 `git remote add` + `git push`，可以让我帮你配置。
+5. **本仓库已推送到 GitHub**（17512974001/Ranger），GitHub Pages 会自动发布网站。改完记得 `git push`，只提交不推送的话网站不会更新。
 
 ---
 
 > 记不住没关系：最常用的就三句话——
 > `git status`（看看）→ `git add -A`（放进暂存）→ `git commit -m "说明"`（存档）。
 > 拿不准就问 AI，让它帮你跑。
+
+---
+
+## 十二、本项目专属：自己改完数据文件后，怎么上传
+
+### 0. 先说清楚：网站用的是哪份数据
+
+- 网页加载的是 `transit_site\data\` 文件夹里的数据（比如 `bus_routes.js`）；
+- 根目录 `data\` 里是同一批数据的“分析用副本”；
+- **两份必须保持一致**：你改了其中一份，另一份也要改成一样，否则网站不会显示你的改动（上次 106/107/108 电车公司名就是这样漏掉的）。
+
+改完文件后，按下面任选一种方式上传。
+
+### 方式 1：让 AI 代劳（最省事，推荐）
+
+改完文件后，在 Codex 对话里直接说：
+
+> 我改了 `data\bus_routes.js`，帮我同步两份并上传。
+
+Codex 会帮你：把改动复制到 `transit_site\data\` → `git add` → `git commit` → `git push`。
+
+### 方式 2：GitHub Desktop 可视化按钮（自己动手推荐）
+
+1. 下载安装 [GitHub Desktop](https://desktop.github.com/)，登录你的 GitHub 账号；
+2. 菜单 `File → Add local repository…`（添加本地仓库），选择文件夹 `D:\haowanyuxi\Canton\CPTOND-2025\Guangzhou`，点 Add；
+3. 平时用记事本/编辑器正常改文件；
+4. 改完打开 GitHub Desktop，窗口左侧 **Changes（更改）** 会列出所有改动的文件；
+   - 如果改了 `data\bus_routes.js`，记得把同样的内容也同步到 `transit_site\data\bus_routes.js`（拿不准就让 AI 同步）；
+5. 在左下角 **Summary（摘要）** 框写一句说明，例如“补充 106/107/108 公司名”；
+6. 点 **Commit to main**（提交到 main）；
+7. 点窗口顶部的 **Push origin**（推送到 GitHub）；
+8. 完成。
+
+### 方式 3：命令行（熟练后用）
+
+在 PowerShell 里执行：
+
+```powershell
+cd D:\haowanyuxi\Canton\CPTOND-2025\Guangzhou
+git add -A
+git commit -m "说明这次改了什么"
+git push
+```
+
+### 上传之后
+
+- 等 1–2 分钟，GitHub Pages 会自动发布新版本；
+- 打开网站后按 **Ctrl+F5** 强制刷新（防止浏览器缓存旧页面）；
+- 如果没变化或报错，把现象截图发给 AI。
+
+### 最容易踩的三个坑
+
+1. **只改了根目录 `data\`，忘了同步 `transit_site\data\`** → 网站不更新（本次 106/107/108 就是）；
+2. **改了文件但没点 Commit / 没执行 commit** → 文件只是躺在“更改”列表里，还没上传；
+3. **在 GitHub 网页上直接编辑大文件**（如 `bus_routes.js`）→ 容易和本地不同步，非必要不用。
