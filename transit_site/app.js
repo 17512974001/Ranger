@@ -354,16 +354,26 @@
   function displayStops(stops, cn) {
     var out = [];
     var seen = {};
-    var last = null;
+    var lastKey = null;
     (stops || []).forEach(function (st) {
       var dn = displayStopName(st[1], cn);
-      if (isLoopDir(cn) || isGenericStop(st[1])) {
-        if (last === dn) { return; } // 环线只去连续重复，保留绕行再次停靠的站
-        last = dn;
-      } else {
-        if (seen[dn]) { return; }
-        seen[dn] = true;
+      if (isLoopDir(cn)) {
+        // 环线掉头/绕圈会在同一站台折返停靠（如 B14 上社 BRT上社3/上社1），
+        // 完整保留车来了原始顺序，不做同名去重
+        out.push(st);
+        return;
       }
+      if (isGenericStop(st[1])) {
+        // 通用站（临时站/招呼站）：同名往往是不同站点，按“站名+站点ID”区分；
+        // 仅丢弃完全相同的连续重复（如 320 路 临时站(九霄缘钓鱼场) 连列两次）
+        var key = dn + '\u0000' + st[2];
+        if (lastKey === key) { return; }
+        lastKey = key;
+        out.push(st);
+        return;
+      }
+      if (seen[dn]) { return; }
+      seen[dn] = true;
       out.push(st);
     });
     return out;

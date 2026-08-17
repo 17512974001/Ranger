@@ -619,10 +619,58 @@ const k290 = Object.keys(sandbox.BUS_ROUTE_STOPS).find(function (k) { return k.s
 if (!k290) { throw new Error('290 loop missing'); }
 const ds290 = sandbox.__APP_DEBUG__.displayStops(sandbox.BUS_ROUTE_STOPS[k290], k290);
 if (ds290.length < 20) {
-  // 旧逻辑（非环线去重）只剩 16 站；括号站名环线应保留回程站（27 站，其中 1 站为分站名连续重复被去）
   throw new Error('290 loop should keep return-leg stops, got ' + ds290.length);
 }
 console.log('parenthesized-termini loop OK (290 keeps ' + ds290.length + ' stops)');
+
+// ---- 环线完整保留：所有环线停靠站数与原始数据一致（掉头/绕圈双停不删） ----
+let loopKeptAll = true;
+let loopChecked = 0;
+Object.keys(sandbox.BUS_ROUTE_STOPS).forEach(function (k) {
+  const m = k.match(/[（(]([^）)]*--[^）)]*)[）)]$/);
+  if (!m) { return; }
+  const p = m[1].split('--');
+  if (p.length !== 2 || p[0].trim() !== p[1].trim()) { return; }
+  loopChecked += 1;
+  const raw = sandbox.BUS_ROUTE_STOPS[k];
+  const disp = sandbox.__APP_DEBUG__.displayStops(raw, k);
+  if (disp.length !== raw.length) {
+    loopKeptAll = false;
+    console.log('  loop drop:', k, disp.length + '/' + raw.length);
+  }
+});
+if (!loopKeptAll || loopChecked === 0) { throw new Error('all loop routes should keep every stop (checked ' + loopChecked + ')'); }
+console.log('loop routes keep all stops OK (' + loopChecked + ' loops checked)');
+
+// ---- B14 上社：掉头后同站台再次停靠，双向各一次 ---- 
+const kB14 = Object.keys(sandbox.BUS_ROUTE_STOPS).find(function (k) { return k.indexOf('B14路') === 0; });
+if (!kB14) { throw new Error('B14 missing'); }
+const dsB14 = sandbox.__APP_DEBUG__.displayStops(sandbox.BUS_ROUTE_STOPS[kB14], kB14);
+const cntShangshe = dsB14.filter(function (st) { return st[1] === '上社'; }).length;
+if (cntShangshe !== 2) { throw new Error('B14 上社 should stop twice, got ' + cntShangshe); }
+console.log('B14 上社 double-stop OK (shows twice)');
+
+// ---- 番63 环线：多个同名临时站是不同站点，全部保留 ----
+const kF63 = Object.keys(sandbox.BUS_ROUTE_STOPS).find(function (k) { return k.indexOf('番63路') === 0; });
+if (!kF63) { throw new Error('番63 missing'); }
+const dsF63 = sandbox.__APP_DEBUG__.displayStops(sandbox.BUS_ROUTE_STOPS[kF63], kF63);
+const tmpF63 = dsF63.filter(function (st) { return /^临时站/.test(st[1]); });
+const tmpF63Ids = tmpF63.map(function (st) { return st[2]; });
+if (tmpF63Ids.length < 4 || new Set(tmpF63Ids).size !== tmpF63Ids.length) {
+  throw new Error('番63 should keep all distinct 临时站, got ' + tmpF63Ids.length + ' ids ' + tmpF63Ids.join());
+}
+console.log('番63 loop distinct 临时站 kept OK (' + tmpF63Ids.length + ' distinct ids)');
+
+// ---- 非环线通用站：完全相同的连续重复才删除（320 路 临时站(九霄缘钓鱼场)） ----
+const k320 = Object.keys(sandbox.BUS_ROUTE_STOPS).find(function (k) { return k.indexOf('320路(') === 0; });
+if (!k320) { throw new Error('320 missing'); }
+const ds320 = sandbox.__APP_DEBUG__.displayStops(sandbox.BUS_ROUTE_STOPS[k320], k320);
+let dup320 = 0;
+for (let x = 1; x < ds320.length; x++) {
+  if (ds320[x][1] === ds320[x - 1][1] && ds320[x][2] === ds320[x - 1][2]) { dup320 += 1; }
+}
+if (dup320 !== 0) { throw new Error('320 identical consecutive generic duplicate should be dropped, got ' + dup320); }
+console.log('320 identical generic duplicate dropped OK');
 
 // ---- 站名更名：顺德一中实验学校 → 广东顺德文德学校（旧名可搜索） ----
 if (sandbox.__APP_DEBUG__.normDisplay('顺德一中实验学校') !== '广东顺德文德学校') {
